@@ -1,0 +1,7 @@
+{
+  "experiments": [
+    { "id": "1", "name": "a title" },
+    { "id": "2", "name": "another title" },
+    { "id": "3", "name": "Yet another title" }
+  ]
+}

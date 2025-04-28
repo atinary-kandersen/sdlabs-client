@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  justify-content: center;
+  margin-block: 3rem;
+  align-items: center;
+}
+
+.left {
+  min-width: 400px;
+  max-width: 700px;
+}
+
+.heading {
+  font-weight: 900;
+}
+
+.bulletPoints {
+  opacity: 0.6;
+  padding-left: 0.2rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+.image {
+  max-height: 250px;
+}

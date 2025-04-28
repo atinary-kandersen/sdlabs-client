@@ -1,0 +1,49 @@
+{
+  "name": "sdlabs2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "vite": "vite",
+    "dev": "concurrently \"vite\" \"npm run json-server\" \"npm run socket-mirror\" --kill-others",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . && prettier --check .",
+    "format": "eslint --fix . && prettier --write .",
+    "json-server": "npx json-server dev/json-server.json --port 3001",
+    "socket-mirror": "node dev/socketMirror.js"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.74.3",
+    "classnames": "^2.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-error-boundary": "^5.0.0",
+    "react-router": "^7.5.0",
+    "socket.io-client": "^4.8.1",
+    "up-fetch": "^2.1.0",
+    "valibot": "^1.0.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@preact/signals-react-transform": "^0.5.1",
+    "@tanstack/react-query-devtools": "^5.74.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "json-server": "^1.0.0-beta.3",
+    "prettier": "^3.5.3",
+    "socket.io": "^4.8.1",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.0"
+  }
+}
