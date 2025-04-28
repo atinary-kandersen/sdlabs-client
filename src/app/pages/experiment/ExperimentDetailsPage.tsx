@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { NavLink, useParams } from 'react-router';
-import ExperimentDetails from '../../lib/features/experiment/ExperimentDetails';
-import socket from '../config/socket';
-import { useExperimentDetails } from '../queries/experiment';
-import { useExperimentsStore } from '../state/store';
+import ExperimentDetails from '../../../lib/features/experiment/ExperimentDetails';
+import socket from '../../config/socket';
+import { useExperimentDetails } from '../../queries/experiment';
+import { useExperimentsStore } from '../../state/store';
 
 function ExperimentDetailsPage() {
   const experimentId = useParams<{ experimentId: string }>().experimentId!;

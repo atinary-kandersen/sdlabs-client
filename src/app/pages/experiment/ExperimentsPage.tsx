@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
-import ExperimentListItem from '../../lib/features/experiment/ExperimentListItem';
-import { useExperiments } from '../queries/experiment';
+import ExperimentListItem from '../../../lib/features/experiment/ExperimentListItem';
+import { useExperiments } from '../../queries/experiment';
 
 const ExperimentsPage = () => {
   const query = useExperiments();
