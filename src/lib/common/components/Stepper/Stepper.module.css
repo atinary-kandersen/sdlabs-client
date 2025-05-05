@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80px;
+}
+
+.steps {
+  --bullet-size: 2.5rem;
+  --bullet-text-color: var(--wa-color-brand);
+  --bullet-border-color: var(--wa-color-gray-90);
+  --line-height: 3px;
+  --bullet-text-color: var(--wa-color-gray-80);
+  --line-color: var(--wa-color-gray-90);
+  --line-color-completed: var(--wa-color-brand);
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.step {
+  --bullet-background-color: transparent;
+  --label-color: var(--wa-color-gray-80);
+
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    width: 11rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: var(--line-color);
+      left: var(--bullet-size);
+      right: 0;
+      height: var(--line-height);
+      top: calc(var(--bullet-size) / 2 - var(--line-height) / 2);
+      transition-duration: var(--wa-transition-normal);
+      transition-timing-function: var(--wa-transition-easing);
+      transition-property: color, background-color;
+      transition-duration: var(--wa-transition-normal);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: var(--line-color-completed);
+      left: var(--bullet-size);
+      /* right: calc(50% - (var(--bullet-size / 2))); */
+      right: 100%;
+      height: var(--line-height);
+      top: calc(var(--bullet-size) / 2 - var(--line-height) / 2);
+      transition-duration: var(--wa-transition-normal);
+      transition-timing-function: var(--wa-transition-easing);
+      transition-property: right;
+      transition-duration: var(--wa-transition-normal);
+    }
+  }
+}
+
+.stepBullet {
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  border-radius: var(--bullet-size);
+  background-color: var(--bullet-background-color);
+  color: var(--bullet-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: solid 3px var(--bullet-border-color);
+  transition-duration: var(--wa-transition-normal);
+  transition-timing-function: var(--wa-transition-easing);
+  transition-property: color, background-color;
+  transition-duration: var(--wa-transition-normal);
+}
+
+.stepLabel {
+  --width: 300px;
+  color: var(--label-color);
+  position: absolute;
+  top: calc(var(--bullet-size) + var(--wa-space-m));
+  text-align: center;
+  left: calc((((var(--width) / 2)) - (var(--bullet-size) / 2)) * -1);
+  min-width: var(--width);
+  max-width: var(--width);
+  transition-duration: var(--wa-transition-normal);
+  transition-timing-function: var(--wa-transition-easing);
+  transition-property: color, background-color;
+  transition-duration: var(--wa-transition-normal);
+}
+
+.stepLabelClickable {
+  cursor: pointer;
+
+  &:hover {
+    --label-color: var(--wa-color-gray-40);
+  }
+}
+
+.stepCompleted {
+  --bullet-background-color: var(--wa-color-brand);
+  /* --line-color: var(--wa-color-brand); */
+  --bullet-text-color: white;
+  --bullet-border-color: var(--wa-color-brand);
+  --label-color: var(--wa-color-gray-60);
+
+  &::after {
+    right: 0 !important;
+  }
+}
+
+.stepActive {
+  --bullet-background-color: white;
+  --bullet-text-color: var(--wa-color-brand);
+  --bullet-border-color: var(--wa-color-brand);
+  --label-color: var(--wa-color-gray-30);
+}

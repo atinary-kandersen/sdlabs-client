@@ -1,15 +1,4 @@
-import {
-  boolean,
-  maxValue,
-  minValue,
-  object,
-  parse,
-  picklist,
-  pipe,
-  string,
-  transform,
-  url
-} from 'valibot';
+import { boolean, maxValue, minValue, object, parse, picklist, pipe, string, transform, url } from 'valibot';
 
 const environmentSchema = object({
   MODE: picklist(['development', 'production', 'test']),

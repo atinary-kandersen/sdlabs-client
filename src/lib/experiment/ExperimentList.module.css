@@ -1,0 +1,40 @@
+.table {
+  th {
+    &[data-status] {
+      text-align: center;
+    }
+  }
+
+  td {
+    white-space: nowrap;
+
+    &[data-status] {
+      text-align: center;
+    }
+
+    &[data-name] {
+      width: 100%;
+      line-height: 1;
+    }
+
+    &[data-watch] {
+      padding-block: 0;
+      text-align: center;
+    }
+
+    &[data-iteration] {
+      text-align: center;
+    }
+  }
+}
+
+.itemLink {
+  display: flex;
+  margin-block: calc(var(--wa-space-s) * -1);
+  vertical-align: middle;
+  gap: var(--wa-space-s);
+
+  wa-icon {
+    color: var(--wa-color-gray-50);
+  }
+}

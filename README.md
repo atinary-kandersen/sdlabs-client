@@ -2,6 +2,7 @@
 
 ## Scripts
 
+- `setup`: Runs all required scripts to run app.
 - `dev`: Launches everything needed to develop.
 - `build`: Creates a production build in the `dist` folder.
 - `preview`: Serves the built solution from the `dist` folder.
@@ -33,28 +34,24 @@ A detailed example of the structure:
 src
 ├── app
 │   ├── config
-│   │   ├── upfetch.ts
+│   │   ├── api.ts
 │   │   ├── environment.ts
 │   │   ├── localization.ts
 │   │   ├── logging.ts
-│   │   ├── queryClient.ts
 │   │   └── socket.ts
 │   ├── components
 │   │   ├── Footer
 │   │   └── Header
-│   ├── pages
+│   ├── routes
 │   │   ├── analytics
 │   │   ├── datasets
 │   │   ├── experiments
-│   │   │   ├── ExperimentsPage.tsx
-│   │   │   └── ExperimentsPage.module.css
-│   │   ├── upload
+│   │   │   ├── ExperimentsRoute.tsx
+│   │   │   └── ExperimentsRoute.module.css
 │   │   ├── userProfile
 │   │   └── welcome
 │   ├── queries
-│   │   ├── analytics
-│   │   │   ├── queries.ts
-│   │   │   └── schemas.ts
+│   │   ├── analytics.ts
 │   │   ├── experiments.ts
 │   │   ├── datasets.ts
 │   │   └── users.ts
@@ -62,7 +59,6 @@ src
 │   │   ├── actions.ts
 │   │   ├── useGlobalState.ts
 │   │   ├── useUserState.ts
-│   │   ├── useLocalizationState.ts
 │   │   └── useThemeState.ts
 │   ├── App.tsx
 │   ├── App.module.css
@@ -70,10 +66,18 @@ src
 │   ├── index.css
 │   ├── Router.tsx
 │   generated
-│   ├── schemas.ts
-│   └── types.ts
+│   ├── api.ts
+│   └── other.ts
 └── lib
-    ├── components
+    ├── common
+    │   ├── components
+    │   │   ├── FormatData
+    │   │   ├── FormatBytes
+    │   │   ├── LearnMore
+    │   │   └── Stepper
+    │   └── styles
+    │       └── commonStyles.module.css
+    ├── features
     │   ├── experiments
     │   └── user
     │       ├── UserDetails.ts
@@ -106,18 +110,3 @@ Presentational components handle tasks such as state, fetching data from APIs an
 Presentational components strictly adhere to React's [unidirectional data flow](https://how.dev/answers/what-is-unidirectional-data-flow-in-react) pattern. They receive all their data via props and communicate to their containing components via callback methods (kind of like emitting events).
 
 **Note**: Presentational components can render other presentational components, but never a container component.
-
-```
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── App.css
-    ├── App.js
-    ├── App.test.js
-    ├── index.css
-    ├── index.js
-    ├── logo.svg
-    └── serviceWorker.js
-    └── setupTests.js
-```

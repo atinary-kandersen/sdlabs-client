@@ -1,0 +1,12 @@
+.focusBox {
+  border: 2px solid var(--wa-color-brand-border-loud);
+  box-shadow: var(--wa-shadow-l);
+  border-radius: var(--wa-border-radius-s);
+}
+
+.hintText {
+  color: var(--wa-color-text-quiet);
+  font-size: var(--wa-size-smaller, 85%);
+  line-height: var(--wa-form-control-label-line-height);
+  font-weight: var(--wa-form-control-value-font-weight);
+}

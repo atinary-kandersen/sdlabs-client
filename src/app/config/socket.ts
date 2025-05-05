@@ -1,16 +1,17 @@
 import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
-import { ServerToClientEvents } from '../../generated/types';
+// import { ServerToClientEvents } from '../../generated/types';
+
+type ServerToClientEvents = {
+  experimentUpdate: (data: { experimentId: string; progress: number }) => void;
+};
 
 type ClientToServerEvents = ServerToClientEvents; // TEMP: For development only. Remove when no longer required.
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
-  'http://localhost:4000',
-  {
-    autoConnect: true,
-    closeOnBeforeunload: true
-  }
-);
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:4000', {
+  autoConnect: true,
+  closeOnBeforeunload: true
+});
 
 socket.on('connect_error', err => {
   console.error(`socket connect_error: ${err.message}`, err);

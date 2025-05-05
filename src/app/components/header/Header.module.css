@@ -1,12 +1,20 @@
 .header {
-  height: 50px;
   display: flex;
   flex-direction: row;
-  min-width: 150px;
+  justify-content: center;
+  height: var(--ati-header-height);
   border-bottom: solid 1px var(--wa-color-brand-border-quiet);
+  background-color: var(--ati-header-background-color);
+}
+
+.headerContent {
+  height: inherit;
+  display: flex;
+  width: -webkit-fill-available;
+  min-width: var(--ati-content-min-width);
+  max-width: var(--ati-content-max-width);
+  padding-inline: var(--ati-content-padding-inline);
   gap: 2rem;
-  padding: 0 2rem;
-  background: var(--wa-color-blue-95);
 }
 
 .headerSectionLeft {
@@ -34,27 +42,29 @@
 
 .navItem {
   display: inline-flex;
+  flex-direction: row;
+  gap: 0.6rem;
   height: inherit;
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--wa-color-gray-20) !important;
   opacity: 0.7;
   font-weight: 600;
   text-decoration: none;
   padding: 0 0.8rem;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   white-space: nowrap;
   font-size: 1rem;
+  line-height: 1;
 }
 
 .navItem:hover {
   opacity: 1;
-  color: inherit;
-  text-decoration: inherit;
 }
 
 .navItemActive {
+  color: var(--wa-color-brand-fill-loud) !important;
+  opacity: 1;
   box-shadow: inset 0px -3px 0px 0px var(--wa-color-brand-fill-loud);
 }
 

@@ -1,23 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { experimentSchema, experimentsSchema } from '../../generated/schemas';
-import { Experiment } from '../../generated/types';
-import { upfetch } from '../config/upfetch';
+import { ExperimentId } from '../../global';
+import api from '../config/api';
 
-export const useExperiments = () =>
-  useQuery<Array<Experiment>>({
-    queryKey: ['experiments'],
-    queryFn: () =>
-      upfetch('/experiments', {
-        schema: experimentsSchema
-      })
-  });
+export const useExperiments = () => api.useQuery('get', '/experiments/', { queryKey: ['experiments'] });
+export const useExperimentDetails = (experiment_id: ExperimentId) =>
+  api.useQuery('get', `/experiments/{experiment_id}/`, { params: { path: { experiment_id } }, queryKey: ['experiments', experiment_id] });
 
-export const useExperimentDetails = (experimentId?: string) =>
-  useQuery<Experiment>({
-    queryKey: ['experiments', experimentId],
-    queryFn: () =>
-      upfetch(`/experiments/${experimentId}`, {
-        schema: experimentSchema
-      }),
-    enabled: Boolean(experimentId)
-  });
+export const useCreateExperiment = () => api.useMutation('post', '/experiments/');

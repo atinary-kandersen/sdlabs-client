@@ -1,0 +1,52 @@
+.table {
+  tr {
+    min-height: 48px;
+
+    &.uploading {
+    }
+  }
+  td {
+    white-space: nowrap;
+
+    &[data-name] {
+      width: 100%;
+
+      a {
+        display: flex;
+        line-height: 1;
+        margin-block: calc(var(--wa-space-s) * -1);
+      }
+    }
+
+    &[data-produced-by] {
+      display: inline-flex;
+      gap: var(--wa-space-2xs);
+    }
+
+    &[data-menu] {
+      text-align: right;
+      padding-block: 0;
+    }
+  }
+}
+
+.itemLink {
+  display: flex;
+  padding-block: var(--wa-space-s);
+  vertical-align: middle;
+  gap: var(--wa-space-s);
+
+  wa-icon {
+    color: var(--wa-color-gray-50);
+  }
+}
+
+.avatar {
+  --size: 2rem;
+  --background-color: var(--wa-color-fill-quiet);
+}
+
+.icon {
+  font-size: 1.4rem;
+  color: var(--wa-color-gray-80);
+}

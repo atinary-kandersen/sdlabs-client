@@ -1,0 +1,41 @@
+.scrollContainer {
+  overflow-x: scroll;
+}
+
+th.parameter {
+  min-width: 100px;
+}
+
+td.batchNumber {
+  text-align: center;
+  color: var(--wa-color-text-quiet);
+  vertical-align: middle;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+td.notes {
+  vertical-align: middle;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  min-width: -webkit-fill-available;
+  padding: 1.5rem 2rem;
+  background: var(--wa-color-brand-fill-quiet);
+}
+
+wa-input.measurementInput {
+  --background-color: #fff;
+  --border-color: var(--wa-color-neutral-border-normal);
+  width: 100px;
+  border-top-color: #fff;
+  border-top-width: 1.5px;
+}
+wa-input.measurementInput::part(input) {
+  font-size: 1rem;
+}
+wa-input.measurementInput:focus-within {
+  --border-color: transparent;
+}

@@ -11,6 +11,3 @@ export const useGlobalStore = create<StoreState>(() => ({
 }));
 
 export const useThemeStore = () => useGlobalStore(state => state.theme);
-
-export const useExperimentsStore = () =>
-  useGlobalStore(state => state.experiments);

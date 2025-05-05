@@ -1,0 +1,20 @@
+.box {
+  align-items: center;
+  background-color: var(--wa-color-brand-fill-quiet);
+  border: dashed 2px var(--wa-color-blue-80);
+  padding: 1.5rem;
+  border-radius: var(--wa-border-radius-s);
+}
+
+.iconWrapper {
+  align-self: flex-start;
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--wa-color-brand-fill-loud);
+}
+
+.button {
+  min-width: 130px;
+}

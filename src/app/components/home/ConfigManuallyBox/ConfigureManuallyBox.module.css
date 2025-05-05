@@ -1,0 +1,18 @@
+.box {
+  max-width: max(600px, 25vw);
+  border: solid 2px var(--wa-color-blue-90);
+  padding: 3rem;
+}
+
+.iconWrapper {
+  align-self: flex-start;
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--wa-color-brand-fill-loud);
+}
+
+.button {
+  min-width: 130px;
+}

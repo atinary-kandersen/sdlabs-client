@@ -1,0 +1,5 @@
+.itemLink {
+  &:hover {
+    background-color: var(--wa-color-neutral-fill-quiet);
+  }
+}

@@ -1,0 +1,22 @@
+tr.mappingTableRow {
+  border-top: none;
+}
+tr.mappingTableRowDisabled {
+  color: var(--wa-color-gray-80);
+}
+td.mappingTableCell {
+  padding: var(--wa-space-xs) var(--wa-space-s);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.mappingFormControl {
+  --border-color: var(--wa-color-gray-80);
+  /* box-shadow: var(--wa-shadow-s); */
+  width: 250px;
+}
+.mappingFormControl[appearance='filled'] {
+  --border-color: var(--wa-color-gray-90);
+}

@@ -1,0 +1,6 @@
+.panel {
+  height: 100%;
+  background-color: var(--wa-color-neutral-fill-quiet);
+  padding: var(--wa-space-xl);
+  width: clamp(300px, 25vw, 400px);
+}

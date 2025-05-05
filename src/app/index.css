@@ -1,7 +1,19 @@
 :root {
-  --app-header-height: 60px;
+  --ati-background-color: #f5f9fb;
+  --ati-header-height: 60px;
+  --ati-header-background-color: var(--wa-color-blue-95);
+  --ati-content-padding-inline: 2rem;
+  --ati-content-max-width: 2400px;
+  --ati-content-min-width: 400px;
+  --ati-page-header-background-color: var(--ati-header-background-color);
 
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /**
+   * Awesome Web components
+   */
+  --wa-form-control-border-radius: var(--wa-border-radius-s);
+  --wa-form-control-label-color: var(--wa-color-gray-30);
+  --wa-font-family-body: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,23 +25,43 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-underline-offset: 2px;
+
+  overflow-y: scroll;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
+/* https://backers.webawesome.com/docs/usage#waiting-for-components-to-load */
+:not(:defined) {
+  visibility: hidden;
+}
+
+a,
+a:visited,
+a:link,
+a:active {
+  color: rgb(26, 115, 232);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: rgb(26, 115, 232) !important;
+  cursor: pointer;
 }
 
 body {
+  font-family: var(--wa-font-family-body);
+  font-size: var(--wa-font-size-m);
+  font-weight: var(--wa-font-weight-body);
+  background-color: var(--ati-background-color);
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  justify-content: center;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 #root {
@@ -47,4 +79,38 @@ body {
   button {
     background-color: #f9f9f9;
   }
+}
+
+table {
+  th {
+    padding-block: var(--wa-space-l);
+  }
+
+  tbody {
+    td {
+      min-height: 48px;
+      vertical-align: middle;
+      padding: var(--wa-space-s);
+    }
+
+    tr:hover {
+      background-color: rgba(200, 200, 200, 0.1);
+
+      &,
+      + tr {
+        border-top-color: rgba(200, 200, 200, 0.2);
+      }
+    }
+  }
+}
+
+kbd {
+  font-size: 0.7rem;
+  line-height: 1;
+  font-weight: 600;
+  color: #888;
+}
+
+wa-icon-button {
+  --background-color-hover: rgba(150, 150, 150, 0.1);
 }

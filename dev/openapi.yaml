@@ -1,0 +1,346 @@
+openapi: 3.0.3
+info:
+  title: Your Project API
+  version: 1.0.0
+  description: Your project description
+paths:
+  /experiments/:
+    get:
+      operationId: experiments_retrieve
+      description: Get list of experiments.
+      summary: Get list of experiments
+      parameters:
+        - in: query
+          name: created_by_id
+          schema:
+            type: string
+            format: uuid
+          description: Filter experiments by created_by_id
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+          description: Number of results to return per page.
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+          description: The initial index from which to return the results.
+        - in: query
+          name: optimizer_id
+          schema:
+            type: string
+            format: uuid
+          description: Filter experiments by optimizer_id
+      tags:
+        - Experiments
+      security:
+        - cookieAuth: []
+        - basicAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginated:Experiment'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: ''
+    post:
+      operationId: experiments_create
+      description: Create a new experiment.
+      summary: Create experiment
+      tags:
+        - Experiments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExperimentCreate.Input'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExperimentCreate.Input'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ExperimentCreate.Input'
+        required: true
+      security:
+        - cookieAuth: []
+        - basicAuth: []
+        - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Experiment'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: ''
+  /experiments/{experiment_id}/:
+    get:
+      operationId: experiments_retrieve_2
+      description: Get experiment details by ID.
+      summary: Get experiment details
+      parameters:
+        - in: path
+          name: experiment_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      tags:
+        - Experiments
+      security:
+        - cookieAuth: []
+        - basicAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Experiment'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: ''
+    patch:
+      operationId: experiments_partial_update
+      summary: Update experiment
+      parameters:
+        - in: path
+          name: experiment_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      tags:
+        - Experiments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedExperimentUpdate.Input'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedExperimentUpdate.Input'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedExperimentUpdate.Input'
+      security:
+        - cookieAuth: []
+        - basicAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Experiment'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: ''
+    delete:
+      operationId: experiments_destroy
+      description: Delete an experiment.
+      summary: Delete experiment
+      parameters:
+        - in: path
+          name: experiment_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      tags:
+        - Experiments
+      security:
+        - cookieAuth: []
+        - basicAuth: []
+        - {}
+      responses:
+        '204':
+          description: No response body
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: ''
+components:
+  schemas:
+    Experiment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        optimizer:
+          $ref: '#/components/schemas/Optimizer'
+        created_by:
+          $ref: '#/components/schemas/UserModel'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - created_at
+        - created_by
+        - id
+        - name
+        - optimizer
+        - updated_at
+    ExperimentCreate.Input:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        optimizer_id:
+          type: string
+          format: uuid
+      required:
+        - name
+        - optimizer_id
+    GenericErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        extra:
+          type: object
+          additionalProperties: {}
+      required:
+        - extra
+        - message
+    Optimizer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        version:
+          type: string
+          maxLength: 50
+      required:
+        - id
+        - type
+        - version
+    Paginated:Experiment:
+      type: object
+      properties:
+        limit:
+          type: integer
+        offset:
+          type: integer
+        count:
+          type: integer
+        next:
+          type: string
+          format: uri
+          nullable: true
+        previous:
+          type: string
+          format: uri
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Experiment'
+      required:
+        - count
+        - limit
+        - next
+        - offset
+        - previous
+        - results
+    PatchedExperimentUpdate.Input:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        optimizer_id:
+          type: string
+          format: uuid
+        created_by_id:
+          type: string
+          format: uuid
+    TypeEnum:
+      enum:
+        - falcon
+        - random_search
+      type: string
+      description: |-
+        * `falcon` - FALCON
+        * `random_search` - RANDOM_SEARCH
+    UserModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        user_type:
+          allOf:
+            - $ref: '#/components/schemas/UserTypeEnum'
+          description: |-
+            Designates whether this user is an admin or normal user.
+
+            * `admin` - Admin
+            * `normal` - Normal
+        groups:
+          type: array
+          items:
+            type: integer
+      required:
+        - id
+    UserTypeEnum:
+      enum:
+        - admin
+        - normal
+      type: string
+      description: |-
+        * `admin` - Admin
+        * `normal` - Normal
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
