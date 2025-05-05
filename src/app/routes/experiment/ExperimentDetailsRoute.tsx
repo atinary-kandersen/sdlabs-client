@@ -26,12 +26,12 @@ export default function ExperimentDetailsRoute() {
         progress: 60
       });
     }
-  }, [query.data]);
+  }, [query.data, experimentId]);
 
   useEffect(() => {
     const subPath = location.pathname.substring(location.pathname.indexOf(experimentId) + experimentId.length + 1);
     setConfigurationNav(configurationNavPaths.includes(subPath) ? subPath : null);
-  }, [location]);
+  }, [location, experimentId]);
 
   const onSelectConfigurationNav = (event: CustomEvent) => {
     const selected = event.detail.item.value;

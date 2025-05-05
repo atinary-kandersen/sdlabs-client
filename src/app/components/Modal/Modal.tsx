@@ -27,7 +27,7 @@ export default function Modal({ children }: { children: ReactNode }) {
     return function cleanup() {
       dialog.removeEventListener('wa-after-hide', onHide);
     };
-  }, []);
+  });
 
   return (
     <wa-dialog ref={dialogRef} style={{ '--width': 'min(95vw, 1000px)' }} with-footer>

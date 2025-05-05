@@ -10,10 +10,6 @@ export default function EditParameterRoute() {
   const navigate = useNavigate();
   const parameter = context.data.parameters.find(p => p.id === parameterId);
 
-  if (!parameter) {
-    return <h4>Parameter not found</h4>;
-  }
-
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -25,7 +21,11 @@ export default function EditParameterRoute() {
     return function cleanup() {
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, []);
+  });
+
+  if (!parameter) {
+    return <h4>Parameter not found</h4>;
+  }
 
   function onChange(newParameter: Partial<Parameter>) {
     context.setParameters(
