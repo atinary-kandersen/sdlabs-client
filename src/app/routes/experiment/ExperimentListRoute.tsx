@@ -31,22 +31,20 @@ export default function ExperimentListRoute() {
           <div className="wa-split">
             <div className="wa-cluster wa-gap-xl">
               <div className="wa-heading-m">Experiments</div>
-              <div className="wa-cluster wa-gap-m">
+              <div className="wa-cluster wa-gap-xl">
                 <div>
-                  <wa-button-group>
-                    {filters.map(filter => (
-                      <wa-button
-                        key={filter}
-                        size="small"
-                        variant={`${activeFilter === filter ? 'brand' : 'neutral'}`}
-                        appearance={`${activeFilter !== filter ? 'outlined' : ''}`}
-                        onClick={() => navigate({ search: `?filter=${filter}` })}
-                        style={{ textTransform: 'capitalize' }}
-                      >
-                        {filter}
-                      </wa-button>
-                    ))}
-                  </wa-button-group>
+                  {filters.map(filter => (
+                    <wa-button
+                      key={filter}
+                      size="small"
+                      variant="neutral"
+                      appearance={`${activeFilter === filter ? 'filled outlined' : 'plain'}`}
+                      onClick={() => navigate({ search: `?filter=${filter}` })}
+                      style={{ textTransform: 'capitalize' }}
+                    >
+                      {filter}
+                    </wa-button>
+                  ))}
                 </div>
                 <div>
                   <wa-input

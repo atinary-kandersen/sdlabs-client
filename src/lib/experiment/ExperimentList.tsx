@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'react-router';
 import { Experiment, ExperimentId } from '../../global';
 import styles from './ExperimentList.module.css';
@@ -27,7 +28,7 @@ export default function ExperimentList({
           const watched = watchList?.includes(experiment.id) || false;
 
           return (
-            <tr key={experiment.id}>
+            <tr key={experiment.id} className={classNames({ [styles.watched]: watched })}>
               <td data-status>
                 <wa-badge appearance="filled" variant="success">
                   Running
@@ -45,7 +46,6 @@ export default function ExperimentList({
                     name={watched ? 'eye' : 'eye-slash'}
                     variant={watched ? 'regular' : 'light'}
                     onClick={() => typeof toggleWatch === 'function' && toggleWatch(experiment.id)}
-                    style={{ color: 'green' }}
                   ></wa-icon-button>
                 </td>
               )}

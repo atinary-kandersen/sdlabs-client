@@ -16,6 +16,10 @@
         line-height: 1;
         margin-block: calc(var(--wa-space-s) * -1);
       }
+
+      wa-icon {
+        color: var(--wa-color-gray-50);
+      }
     }
 
     &[data-produced-by] {
@@ -35,10 +39,6 @@
   padding-block: var(--wa-space-s);
   vertical-align: middle;
   gap: var(--wa-space-s);
-
-  wa-icon {
-    color: var(--wa-color-gray-50);
-  }
 }
 
 .avatar {

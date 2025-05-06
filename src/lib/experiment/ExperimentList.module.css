@@ -1,4 +1,14 @@
 .table {
+  --row-height: 50px;
+
+  tr {
+    height: var(--row-height);
+
+    &.watched td[data-watch] wa-icon-button::part(base) {
+      color: var(--wa-color-success-fill-loud);
+    }
+  }
+
   th {
     &[data-status] {
       text-align: center;
@@ -6,6 +16,7 @@
   }
 
   td {
+    padding: var(--wa-space-xs);
     white-space: nowrap;
 
     &[data-status] {
@@ -15,6 +26,18 @@
     &[data-name] {
       width: 100%;
       line-height: 1;
+      padding-block: 0;
+
+      wa-icon {
+        color: var(--wa-color-gray-50);
+      }
+
+      a {
+        display: flex;
+        height: var(--row-height);
+        gap: var(--wa-space-xs);
+        align-items: center;
+      }
     }
 
     &[data-watch] {
@@ -28,13 +51,14 @@
   }
 }
 
-.itemLink {
+/* .itemLink {
   display: flex;
   margin-block: calc(var(--wa-space-s) * -1);
   vertical-align: middle;
   gap: var(--wa-space-s);
+  justify-items: center;
 
   wa-icon {
     color: var(--wa-color-gray-50);
   }
-}
+} */

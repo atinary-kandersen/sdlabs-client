@@ -3,8 +3,8 @@
   flex-direction: row;
   justify-content: center;
   height: var(--ati-header-height);
-  border-bottom: solid 1px var(--wa-color-brand-border-quiet);
-  background-color: var(--ati-header-background-color);
+  /* border-bottom: solid 1px var(--wa-color-brand-border-quiet);
+  background-color: var(--ati-header-background-color); */
 }
 
 .headerContent {
@@ -65,7 +65,7 @@
 .navItemActive {
   color: var(--wa-color-brand-fill-loud) !important;
   opacity: 1;
-  box-shadow: inset 0px -3px 0px 0px var(--wa-color-brand-fill-loud);
+  /* box-shadow: inset 0px -3px 0px 0px var(--wa-color-brand-fill-loud); */
 }
 
 .searchInput {

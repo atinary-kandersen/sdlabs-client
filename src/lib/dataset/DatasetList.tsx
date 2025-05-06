@@ -17,16 +17,27 @@ export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
       <tbody>
         {datasets.map((dataset, index) => (
           <tr key={index} className={classNames({ [styles.uploading]: index === 0 })}>
-            <td data-name>
-              {index === 0 ? (
-                <wa-progress-bar value="70" style={{ height: 6 }}></wa-progress-bar>
-              ) : (
+            {index === 0 && (
+              <td data-name>
+                <div className="wa-flank:start">
+                  <div className="wa-cluster wa-gap-s">
+                    <wa-icon name="file" variant="light"></wa-icon>
+                    {dataset.name}
+                  </div>
+                  <div style={{ width: '100%' }}>
+                    <wa-progress-bar value="70" style={{ height: 6 }}></wa-progress-bar>
+                  </div>
+                </div>
+              </td>
+            )}
+            {index > 0 && (
+              <td data-name>
                 <Link to={dataset.id} className={styles.itemLink}>
                   <wa-icon name="file" variant="light"></wa-icon>
                   {dataset.name}
                 </Link>
-              )}
-            </td>
+              </td>
+            )}
             <td data-menu>
               {index > 0 && (
                 <>
