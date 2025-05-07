@@ -1,11 +1,11 @@
 :root {
   --ati-background-color: #f5f9fb;
-  --ati-header-height: 60px;
   --ati-header-background-color: var(--wa-color-blue-95);
-  --ati-content-padding-inline: 2rem;
+  --ati-content-padding-block: 2rem;
+  --ati-content-padding-inline: 3rem;
   --ati-content-max-width: 2400px;
   --ati-content-min-width: 400px;
-  --ati-page-header-background-color: var(--ati-header-background-color);
+  --ati-nav-bar-width: 56px;
 
   /**
    * Awesome Web components
@@ -13,6 +13,7 @@
   --wa-form-control-border-radius: var(--wa-border-radius-s);
   --wa-form-control-label-color: var(--wa-color-gray-30);
   --wa-font-family-body: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --wa-panel-border-radius: var(--wa-border-radius-s);
 
   line-height: 1.5;
   font-weight: 400;

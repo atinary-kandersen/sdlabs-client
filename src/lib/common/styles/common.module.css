@@ -10,3 +10,13 @@
   line-height: var(--wa-form-control-label-line-height);
   font-weight: var(--wa-form-control-value-font-weight);
 }
+
+.linkTransparent {
+  color: inherit !important;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}

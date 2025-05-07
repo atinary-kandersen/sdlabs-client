@@ -1,6 +1,7 @@
+import classNames from 'classnames';
 import { ReactNode } from 'react';
-import { To } from 'react-router';
-import LinkTransparent from '../LinkTransparent/LinkTransparent';
+import { Link, To } from 'react-router';
+import commonStyles from '../../styles/common.module.css';
 import styles from './List.module.css';
 
 export default function ListItem({
@@ -29,9 +30,9 @@ export default function ListItem({
 
   if (linkTo) {
     return (
-      <LinkTransparent to={linkTo} className={styles.itemLink}>
+      <Link to={linkTo} className={classNames(commonStyles.linkTransparent, styles.itemLink)}>
         {Item}
-      </LinkTransparent>
+      </Link>
     );
   }
 

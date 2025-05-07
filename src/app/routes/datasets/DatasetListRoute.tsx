@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { Outlet, useLocation } from 'react-router';
-import LinkTransparent from '../../../lib/common/components/LinkTransparent/LinkTransparent';
+import { Link, Outlet, useLocation } from 'react-router';
+import commonStyles from '../../../lib/common/styles/common.module.css';
 import DatasetList from '../../../lib/dataset/DatasetList';
 import UploadDatasetBox from '../../../lib/dataset/UploadDatasetBox';
 import { Page } from '../../components/page/Page';
@@ -43,9 +43,9 @@ export default function DatasetListRoute() {
     <Page>
       <Page.Content>
         <div className="wa-stack wa-gap-2xl">
-          <LinkTransparent to="mapping" state={{ backgroundPathname: location.pathname }}>
+          <Link to="mapping" state={{ backgroundPathname: location.pathname }} className={commonStyles.linkTransparent}>
             <UploadDatasetBox />
-          </LinkTransparent>
+          </Link>
           <div className="wa-split">
             <div className="wa-cluster wa-gap-xl">
               <div className="wa-heading-m">Datasets</div>

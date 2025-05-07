@@ -10,16 +10,16 @@ export default function HomeRoute() {
 
   return (
     <Page>
-      <Page.Header center>
-        <Hero />
-      </Page.Header>
       <Page.Content center>
-        <div className="wa-gap-3xl">
-          <div style={{ maxWidth: 600 }}>
-            <UploadBox onClick={() => navigate(`/datasets/${faker.string.ulid()}`)} />
-          </div>
-          <div style={{ maxWidth: 600 }}>
-            <ConfigureManuallyBox onClick={() => navigate('experiments/create')} />
+        <div className="wa-align-items-center wa-stack wa-gap-3xl">
+          <Hero />
+          <div className="wa-gap-3xl">
+            <div style={{ maxWidth: 600 }}>
+              <UploadBox onClick={() => navigate(`/datasets/${faker.string.ulid()}`)} />
+            </div>
+            <div style={{ maxWidth: 600 }}>
+              <ConfigureManuallyBox onClick={() => navigate('experiments/create')} />
+            </div>
           </div>
         </div>
       </Page.Content>

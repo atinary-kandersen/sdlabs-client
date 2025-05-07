@@ -1,42 +1,29 @@
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router';
+import { InferOutput, picklist, safeParse } from 'valibot';
 import ExperimentDetailsHeader from '../../../lib/experiment/ExperimentDetailsHeader';
+import ExperimentNavigation from '../../../lib/experiment/ExperimentNavigation';
 import { Page } from '../../components/page/Page';
-import socket from '../../config/socket';
 import { useExperimentDetails } from '../../queries/experiment';
-// import { useExperimentsStore } from '../../state/store';
 
-const configurationNavPaths = ['parameters', 'objectives', 'constraints', 'batching', 'optimizer'];
-type ConfigurationNav = (typeof configurationNavPaths)[number];
+const configurationPaths = ['parameters', 'objectives', 'constraints', 'batching', 'optimizer'];
+const configurationPathSchema = picklist(configurationPaths);
+type ConfigurationNav = InferOutput<typeof configurationPathSchema>;
 
 export default function ExperimentDetailsRoute() {
   const experimentId = useParams<{ experimentId: string }>().experimentId!;
   const query = useExperimentDetails(experimentId);
-  // const update = useExperimentsStore().get(experimentId);
   const navigate = useNavigate();
   const location = useLocation();
-  const [configurationNav, setConfigurationNav] = useState<null | ConfigurationNav>();
-
-  useEffect(() => {
-    if (query.data) {
-      // Simulate server sending experimentUpdate event.
-      socket.emit('experimentUpdate', {
-        experimentId,
-        progress: 60
-      });
-    }
-  }, [query.data, experimentId]);
+  const [selectedConfigurationPath, setSelectedConfigurationPath] = useState<null | ConfigurationNav>(null);
 
   useEffect(() => {
     const subPath = location.pathname.substring(location.pathname.indexOf(experimentId) + experimentId.length + 1);
-    setConfigurationNav(configurationNavPaths.includes(subPath) ? subPath : null);
-  }, [location, experimentId]);
+    const parseResult = safeParse(configurationPathSchema, subPath);
+    setSelectedConfigurationPath(parseResult.success ? parseResult.output : null);
+  }, [experimentId, location]);
 
-  const onSelectConfigurationNav = (event: CustomEvent) => {
-    const selected = event.detail.item.value;
-    navigate(selected);
-  };
+  const onSelectedConfigurationPath = (configurationPath: string) => navigate(configurationPath);
 
   if (query.isLoading) {
     return <wa-spinner style={{ fontSize: '3rem' }}></wa-spinner>;
@@ -48,36 +35,23 @@ export default function ExperimentDetailsRoute() {
 
   return (
     <Page>
-      <Page.Header>
-        <ExperimentDetailsHeader name={experimentDetails.name} />
-      </Page.Header>
-      <Page.Nav>
-        <NavLink to="" end>
-          Home
-        </NavLink>
-        <NavLink to="insights">Insights</NavLink>
-        <NavLink to="history">History</NavLink>
-        <wa-dropdown>
-          <wa-button
-            appearance="plain"
-            slot="trigger"
-            caret
-            data-active={configurationNav !== null}
-            className={classNames({ active: configurationNav !== null })}
-            style={{ minWidth: 160 }}
-          >
-            <span style={{ textTransform: 'capitalize' }}>{configurationNav ?? 'Configuration'}</span>
-          </wa-button>
-          <wa-menu onwa-select={onSelectConfigurationNav}>
-            {configurationNavPaths.map(path => (
-              <wa-menu-item key={path} value={path}>
-                {path.charAt(0).toUpperCase() + path.slice(1)}
-              </wa-menu-item>
-            ))}
-          </wa-menu>
-        </wa-dropdown>
-      </Page.Nav>
       <Page.Content>
+        <ExperimentDetailsHeader name={experimentDetails.name} />
+
+        <ExperimentNavigation selectedConfigurationPath={selectedConfigurationPath} onSelectedConfigurationPath={onSelectedConfigurationPath} />
+        {/* <wa-tab-group>
+          <wa-tab panel="general">Home</wa-tab>
+          <wa-tab panel="custom">Insights</wa-tab>
+          <wa-tab panel="advanced">History</wa-tab>
+          <wa-tab panel="advanced">Configuration</wa-tab>
+
+          <wa-tab-panel name="general">This is the general tab panel.</wa-tab-panel>
+          <wa-tab-panel name="custom">This is the custom tab panel.</wa-tab-panel>
+          <wa-tab-panel name="advanced">This is the advanced tab panel.</wa-tab-panel>
+          <wa-tab-panel name="disabled">This is a disabled tab panel.</wa-tab-panel>
+        </wa-tab-group> */}
+        {/* <wa-divider></wa-divider> */}
+        <div style={{ height: '2rem' }}></div>
         <Outlet />
       </Page.Content>
     </Page>

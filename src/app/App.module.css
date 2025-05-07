@@ -8,4 +8,5 @@
 .main {
   display: flex;
   flex: 1;
+  margin-left: var(--ati-nav-bar-width);
 }

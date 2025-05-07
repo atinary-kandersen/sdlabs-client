@@ -23,6 +23,9 @@ const Router = () => (
           <Route index element={<DatasetListRoute />} />
           <Route path=":datasetId" element={<DatasetDetailsRoute />} />
         </Route>
+        <Route path="settings" element={<h1>Settings</h1>} />
+        <Route path="documentation" element={<h1>Documentation</h1>} />
+        <Route path="user" element={<h1>User</h1>} />
         <Route path="analytics" element={<AnalyticsRoute />} />
         <Route path="experiments" element={<ExperimentListRoute />} />
         <Route path="experiments/create" element={<CreateExperimentRoute />}>

@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet } from 'react-router';
 import ErrorFallbackRender from '../lib/common/components/error/ErrorFallbackRender';
 import styles from './App.module.css';
-import Header from './components/header/Header';
+import SideNavPanel from './components/SideNavPanel/SideNavPanel';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +19,7 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <ErrorBoundary FallbackComponent={ErrorFallbackRender}>
         <div id="app" className={styles.app}>
-          <Header />
+          <SideNavPanel />
           <main className={styles.main}>
             <Outlet />
           </main>
