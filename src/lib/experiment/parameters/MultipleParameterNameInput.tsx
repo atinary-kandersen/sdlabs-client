@@ -1,5 +1,9 @@
+import { TextInput } from '@mantine/core';
+import { KeyboardEvent } from 'react';
+import commonStyles from '../../common/styles/common.module.css';
+
 export default function MultipleParameterNameInput({ onEnter }: { onEnter: (names: string[]) => void }) {
-  function onKeyPress(e: KeyboardEvent) {
+  function onKeyUp(e: KeyboardEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
     const value = target.value;
 
@@ -17,15 +21,9 @@ export default function MultipleParameterNameInput({ onEnter }: { onEnter: (name
   }
 
   return (
-    <wa-input
-      aut
-      inputmode="text"
-      placeholder="Ex: pH, temperature, pressure"
-      hint="You can enter multiple parameter names delimited by comma (,) or semi-colon (;)."
-      onKeyPress={onKeyPress}
-      autocorrect="off"
-      autocomplete="off"
-      spellcheck="off"
-    ></wa-input>
+    <div className="wa-stack wa-gap-xs">
+      <TextInput placeholder="Ex: pH, temperature, pressure" onKeyUp={onKeyUp} autoCorrect="off" autoComplete="off" spellCheck="false"></TextInput>
+      <div className={commonStyles.hintText}>You can enter multiple parameter names delimited by comma (,) or semi-colon (;).</div>
+    </div>
   );
 }

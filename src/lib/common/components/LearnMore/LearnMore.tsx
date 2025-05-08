@@ -1,17 +1,18 @@
+import { HoverCard, Popover, Text } from '@mantine/core';
 import commonStyles from '../../../common/styles/common.module.css';
 
-let tooltipCounter = 0;
-
 const LearnMore = ({ text }: { text: string }) => {
-  const tooltipId = `learn-more-tooltip-${++tooltipCounter}`;
-
   return (
-    <>
-      <span id={tooltipId} className={commonStyles.hintText} style={{ cursor: 'pointer' }}>
-        <u>Learn more</u>
-      </span>
-      <wa-tooltip for={tooltipId}>{text}</wa-tooltip>
-    </>
+    <HoverCard width={200} position="top" withArrow>
+      <HoverCard.Target>
+        <span className={commonStyles.hintText} style={{ cursor: 'pointer' }}>
+          <u>Learn more</u>
+        </span>
+      </HoverCard.Target>
+      <Popover.Dropdown style={{ pointerEvents: 'none' }}>
+        <Text size="sm">{text}</Text>
+      </Popover.Dropdown>
+    </HoverCard>
   );
 };
 

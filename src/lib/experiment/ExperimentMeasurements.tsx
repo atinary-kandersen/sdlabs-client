@@ -1,3 +1,4 @@
+import { TextInput } from '@mantine/core';
 import classNames from 'classnames';
 import commonStyles from '../common/styles/common.module.css';
 import styles from './ExperimentMeasurements.module.css';
@@ -27,13 +28,13 @@ const ExperimentMeasurements = () => {
               <td>{Math.random().toFixed(2)}</td>
               <td>{Math.random().toFixed(1)}</td>
               <td>
-                <wa-input type="number" size="small" value={Math.random().toFixed(1)} class={styles.measurementInput}></wa-input>
+                <TextInput size="sm" value={Math.random().toFixed(1)}></TextInput>
               </td>
               <td>
-                <wa-input type="number" size="small" value={Math.random().toFixed(1)} class={styles.measurementInput}></wa-input>
+                <TextInput size="sm" value={Math.random().toFixed(4)}></TextInput>
               </td>
               <td className={styles.notes}>
-                <wa-icon-button name="pen-to-square" variant="regular"></wa-icon-button>
+                <wa-icon name="pen-to-square" variant="regular" style={{ color: 'gray' }}></wa-icon>
               </td>
             </tr>
           ))}

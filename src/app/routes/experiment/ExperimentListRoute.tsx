@@ -1,3 +1,4 @@
+import { Button, Center, Flex, Grid, Group, SegmentedControl, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { Experiment, ExperimentId } from '../../../global';
@@ -5,7 +6,7 @@ import ExperimentList from '../../../lib/experiment/ExperimentList';
 import { Page } from '../../components/page/Page';
 import { useExperiments } from '../../queries/experiment';
 
-const filters = ['all', 'mine', 'watched', 'archived'] as const;
+const filters = ['All', 'Mine', 'Watched', 'Archived'];
 type Filter = (typeof filters)[number];
 
 export default function ExperimentListRoute() {
@@ -13,7 +14,8 @@ export default function ExperimentListRoute() {
   const navigate = useNavigate();
   const query = useExperiments();
   const searchParams = new URLSearchParams(location.search);
-  const activeFilter = searchParams.has('filter') && filters.includes(searchParams.get('filter') as Filter) ? searchParams.get('filter') : filters[0];
+  const activeFilter =
+    searchParams.has('filter') && filters.includes(searchParams.get('filter') as Filter) ? searchParams.get('filter')! : filters[0];
   const [watchList, setWatchList] = useState<Array<ExperimentId>>([]);
 
   function toggleWatch(experimentId: ExperimentId) {
@@ -27,44 +29,22 @@ export default function ExperimentListRoute() {
   return (
     <Page>
       <Page.Content>
-        <div className="wa-stack wa-gap-xl">
-          <div className="wa-split">
-            <div className="wa-cluster wa-gap-xl">
-              <div className="wa-heading-m">Experiments</div>
-              <div className="wa-cluster wa-gap-xl">
-                <div>
-                  {filters.map(filter => (
-                    <wa-button
-                      key={filter}
-                      size="small"
-                      variant="neutral"
-                      appearance={`${activeFilter === filter ? 'filled outlined' : 'plain'}`}
-                      onClick={() => navigate({ search: `?filter=${filter}` })}
-                      style={{ textTransform: 'capitalize' }}
-                    >
-                      {filter}
-                    </wa-button>
-                  ))}
-                </div>
-                <div>
-                  <wa-input
-                    type="text"
-                    clearable
-                    size="small"
-                    placeholder="Search..."
-                    autocomplete="off"
-                    spellcheck="off"
-                    autocapitalize="off"
-                  ></wa-input>
-                </div>
-              </div>
-            </div>
-            <div className="wa-cluster">
-              <wa-button size="small" variant="brand" onClick={() => navigate('create')}>
-                Create experiment
-              </wa-button>
-            </div>
-          </div>
+        <Stack gap="xl">
+          <Grid>
+            <Grid.Col span={8}>
+              <Group>
+                <h3>Experiments</h3>
+                <SegmentedControl data={filters} value={activeFilter} onChange={filter => navigate({ search: `?filter=${filter}` })} />
+              </Group>
+            </Grid.Col>
+            <Grid.Col span={4}>
+              <Flex justify="flex-end" wrap="nowrap" align="center">
+                <Center>
+                  <Button onClick={() => navigate('create')}>Create experiment</Button>
+                </Center>
+              </Flex>
+            </Grid.Col>
+          </Grid>
 
           <div>
             {query.isLoading && <p>Loading ...</p>}
@@ -74,7 +54,7 @@ export default function ExperimentListRoute() {
             {/* {query.data && <ExperimentList experiments={query.data.results} />} */}
             {query.data && <ExperimentList experiments={query.data as unknown as Experiment[]} toggleWatch={toggleWatch} watchList={watchList} />}
           </div>
-        </div>
+        </Stack>
       </Page.Content>
     </Page>
   );

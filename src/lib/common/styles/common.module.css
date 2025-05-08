@@ -5,10 +5,9 @@
 }
 
 .hintText {
-  color: var(--wa-color-text-quiet);
-  font-size: var(--wa-size-smaller, 85%);
-  line-height: var(--wa-form-control-label-line-height);
-  font-weight: var(--wa-form-control-value-font-weight);
+  color: var(--mantine-color-gray-6);
+  font-size: var(--mantine-font-size-sm, 0.8rem);
+  line-height: var(--mantine-line-height-sm, inherit);
 }
 
 .linkTransparent {

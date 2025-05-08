@@ -22,9 +22,10 @@
       }
     }
 
-    &[data-produced-by] {
+    &[data-produced-by] div {
       display: inline-flex;
       gap: var(--wa-space-2xs);
+      align-items: center;
     }
 
     &[data-menu] {

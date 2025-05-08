@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { NavLink } from 'react-router';
 import { PageNav } from '../../app/components/page/Page';
 
@@ -16,7 +15,8 @@ export default function ExperimentNavigation({
       </NavLink>
       <NavLink to="insights">Insights</NavLink>
       <NavLink to="history">History</NavLink>
-      <wa-dropdown>
+      <NavLink to="history">Configuration</NavLink>
+      {/* <wa-dropdown>
         <wa-button
           appearance="plain"
           slot="trigger"
@@ -34,7 +34,7 @@ export default function ExperimentNavigation({
           <wa-menu-item value="batching">Batching</wa-menu-item>
           <wa-menu-item value="optimizer">Optimizer</wa-menu-item>
         </wa-menu>
-      </wa-dropdown>
+      </wa-dropdown> */}
     </PageNav>
   );
 }

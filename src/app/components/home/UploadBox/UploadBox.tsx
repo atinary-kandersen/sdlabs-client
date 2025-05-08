@@ -1,7 +1,8 @@
+import { Button } from '@mantine/core';
 import classNames from 'classnames';
 import styles from './UploadBox.module.css';
 
-const UploadBox = ({ onClick }: { onClick: () => void }) => {
+export default function UploadBox({ onClick }: { onClick: () => void }) {
   return (
     <>
       <div className={classNames('wa-flank:start wa-gap-xl wa-align-items-start wa-border-radius-l', styles.box)}>
@@ -16,15 +17,12 @@ const UploadBox = ({ onClick }: { onClick: () => void }) => {
             </p>
           </div>
           <div>
-            <wa-button size="medium" variant="brand" onClick={onClick} class={styles.button}>
-              <wa-icon slot="suffix" name="upload" appearance="regular"></wa-icon>
+            <Button variant="filled" onClick={onClick} rightSection={<wa-icon slot="suffix" name="upload" appearance="regular"></wa-icon>}>
               Browse
-            </wa-button>
+            </Button>
           </div>
         </div>
       </div>
     </>
   );
-};
-
-export default UploadBox;
+}

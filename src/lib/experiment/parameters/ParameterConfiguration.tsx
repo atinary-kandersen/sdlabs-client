@@ -1,31 +1,30 @@
+import { Select, TextInput } from '@mantine/core';
 import { ChangeEvent } from 'react';
 import { Parameter, ParameterType } from '../../../global';
 
 export default function ParameterConfiguration({ parameter, onChange }: { parameter: Parameter; onChange: (parameter: Partial<Parameter>) => void }) {
-  // const [type, setType] = useState<ParameterType>(parameter.type);
-
   return (
     <>
       <div className="wa-flank:end">
         <div>
-          <wa-input
-            inputmode="text"
-            placeholder="Parameter name"
-            value={parameter.name}
+          <TextInput
             required
+            value={parameter.name}
+            placeholder="Parameter name"
             onInput={(event: ChangeEvent<HTMLInputElement>) => onChange({ name: event.target.value })}
-          ></wa-input>
+          ></TextInput>
         </div>
         <div>
-          <wa-select
-            placeholder="Type"
-            value={parameter.type}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) => onChange({ type: e.target.value as ParameterType })}
+          <Select
             required
-          >
-            <wa-option value="numerical">Numerical</wa-option>
-            <wa-option value="categorical">Categorical</wa-option>
-          </wa-select>
+            placeholder="Type"
+            data={[
+              { value: 'categorical', label: 'Categorical' },
+              { value: 'numerical', label: 'Numerical' }
+            ]}
+            value={parameter.type}
+            onChange={value => onChange({ type: value?.toLowerCase() as ParameterType })}
+          ></Select>
         </div>
       </div>
     </>

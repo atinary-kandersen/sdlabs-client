@@ -1,5 +1,5 @@
+import { Select, Switch, TextInput } from '@mantine/core';
 import classNames from 'classnames';
-import { ChangeEvent } from 'react';
 import styles from './DatasetMapping.module.css';
 import { ColumnType, MappingDefinition } from './types';
 
@@ -18,33 +18,30 @@ export default function MappingItem({
   return (
     <tr className={classNames(styles.mappingTableRow, { [styles.mappingTableRowDisabled]: item.disabled })}>
       <td className={styles.mappingTableCell}>
-        <wa-switch checked={item.disabled === false} onChange={toggleDisabled}></wa-switch>
+        <Switch checked={item.disabled === false} onChange={toggleDisabled}></Switch>
       </td>
       <td className={styles.mappingTableCell}>
-        <wa-input value={item.columnName} appearance="filled" readonly disabled={item.disabled} class={styles.mappingFormControl}></wa-input>
+        <TextInput value={item.columnName} readOnly disabled={item.disabled} className={styles.mappingFormControl}></TextInput>
       </td>
       <td className={styles.mappingTableCell}>
         {!item.disabled && <wa-icon name="arrow-right-long" style={{ color: 'var(--wa-color-gray-70)' }}></wa-icon>}
       </td>
       <td className={styles.mappingTableCell}>
-        <wa-select
+        <Select
+          data={[
+            { value: 'parameter', label: 'Parameter' },
+            { value: 'measurement', label: 'Measurement' },
+            { value: 'both', label: 'Both' }
+          ]}
           value={item.columnType}
           placeholder="Select"
           disabled={item.disabled === true}
-          class={styles.mappingFormControl}
-          onInput={(event: ChangeEvent<HTMLSelectElement>) => {
-            changeColumnType(event.target.value as ColumnType);
-            event.stopPropagation();
-            event.preventDefault();
-          }}
-        >
-          <wa-option value="parameter">Parameter</wa-option>
-          <wa-option value="measurement">Measurement</wa-option>
-          <wa-option value="both">Both</wa-option>
-        </wa-select>
+          className={styles.mappingFormControl}
+          onChange={value => changeColumnType(value as ColumnType)}
+        />
       </td>
       <td className={styles.mappingTableCell}>
-        {isValid && <wa-icon name="circle-check" style={{ fontSize: '1.2rem', color: item.disabled ? 'initial' : 'green;' }}></wa-icon>}
+        {isValid && <wa-icon name="circle-check" style={{ fontSize: '1.2rem', color: item.disabled ? 'lightgray' : 'green' }}></wa-icon>}
       </td>
     </tr>
   );

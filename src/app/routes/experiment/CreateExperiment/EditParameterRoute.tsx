@@ -1,3 +1,4 @@
+import { Kbd } from '@mantine/core';
 import { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { Parameter } from '../../../../global';
@@ -43,7 +44,7 @@ export default function EditParameterRoute() {
       <div className="wa-cluster wa-gap-s" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
         <wa-icon name="arrow-left" appearance="regular"></wa-icon>
         <h3 className="wa-heading-m">Parameters</h3>
-        <kbd>Esc</kbd>
+        <Kbd>Esc</Kbd>
       </div>
 
       <ParameterConfiguration parameter={parameter} onChange={onChange} />

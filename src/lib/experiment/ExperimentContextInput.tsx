@@ -1,29 +1,21 @@
+import { Textarea } from '@mantine/core';
 import classNames from 'classnames';
 import LearnMore from '../common/components/LearnMore/LearnMore';
 import commonStyles from '../common/styles/common.module.css';
 
 const ExperimentContextInput = () => {
   return (
-    <div className={classNames('wa-stack wa-gap-xs')} style={{ width: '100%' }}>
+    <div className={classNames('wa-stack wa-gap-xs')}>
       <div className="wa-flank:end">
-        <div>
-          <label>Context</label>
+        <label>Context</label>
 
-          <span className={commonStyles.hintText}>
-            <span style={{ marginInline: '0.5rem' }}>·</span>Max 140 characters
-          </span>
-        </div>
-        <LearnMore text="To guide the optimization, add any observations or hypotheses, in natural language." />
+        <LearnMore text="Add any observations or hypotheses you may have, in natural language, to guide the optimization." />
       </div>
-      <wa-textarea
-        hint="Note: Only your latest contextual information will be used in the optimization, not subsequent ones."
-        placeholder={`Ex: "Add more acid to the next batch."`}
-        maxlength={140}
-        resize="none"
-        rows={4}
-        inputmode="text"
-        spellcheck="false"
-      ></wa-textarea>
+      <Textarea rows={4} placeholder={`Ex: "Add more acid to the next batch."`} maxLength={140} resize="none" spellCheck="false"></Textarea>
+      <span className={commonStyles.hintText}>Max 140 characters</span>
+      <div className={commonStyles.hintText}>
+        Note: Only your latest contextual information will be used in the optimization, not subsequent ones.
+      </div>
     </div>
   );
 };

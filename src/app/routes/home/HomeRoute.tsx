@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { useNavigate } from 'react-router';
 import ConfigureManuallyBox from '../../components/home/ConfigManuallyBox/ConfigureManuallyBox';
-import { Hero } from '../../components/home/Hero/Hero';
+import Hero from '../../components/home/Hero/Hero';
 import UploadBox from '../../components/home/UploadBox/UploadBox';
 import { Page } from '../../components/page/Page';
 

@@ -9,37 +9,15 @@
   border-right: 1px solid var(--wa-color-neutral-fill-normal);
   padding-block: var(--wa-space-s);
   box-shadow: var(--wa-shadow-m);
-
-  wa-icon-button {
-    color: var(--wa-color-gray-50);
-    --text-color-active: var(--wa-color-brand-fill-loud);
-
-    &:hover {
-      color: var(--wa-color-gray-40);
-    }
-
-    &::part(base) {
-      padding: var(--wa-space-s);
-    }
-  }
-
-  wa-icon {
-    color: var(--wa-color-gray-80);
-  }
 }
 
 .logo {
-  width: 60%;
+  width: 65%;
 }
 
 .bottom {
   position: absolute;
   bottom: var(--wa-space-xs);
-}
-
-.navLinkActive wa-icon-button::part(base) {
-  background-color: var(--wa-color-brand-fill-quiet);
-  color: var(--wa-color-brand-fill-loud);
 }
 
 .divider {

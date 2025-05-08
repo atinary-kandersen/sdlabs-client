@@ -1,3 +1,4 @@
+import { Avatar } from '@mantine/core';
 import { To } from 'react-router';
 import { ParameterType } from '../../../global';
 import List from '../../common/components/List/List';
@@ -15,9 +16,9 @@ export default function ParameterListItem({
 }) {
   const Item = (
     <List.Item onRemove={onRemove} linkTo={linkTo}>
-      <wa-avatar style={{ '--size': '2rem' }}>
+      <Avatar>
         <span slot="icon">{type === 'categorical' ? 'Ca' : 'Nu'}</span>
-      </wa-avatar>
+      </Avatar>
       <div>{name}</div>
     </List.Item>
   );

@@ -1,7 +1,8 @@
+import { Button } from '@mantine/core';
 import classNames from 'classnames';
 import styles from './Hero.module.css';
 
-export const Hero = () => {
+export default function Hero() {
   return (
     <div className={classNames('wa-cluster', styles.container)}>
       <div className={classNames(styles.left, 'wa-stack wa-gap-2xl')}>
@@ -27,14 +28,18 @@ export const Hero = () => {
           </p>
         </div>
         <div className="wa-cluster">
-          <wa-button appearance="outlined">Tutorial</wa-button>
-          <wa-button appearance="outlined">Watch the demo</wa-button>
-          <wa-button appearance="outlined" href="https://enterprise.atinary.com/documentation/index.html" target="_blank">
+          <Button variant="outline" color="gray">
+            Tutorial
+          </Button>
+          <Button variant="outline" color="gray">
+            Watch the demo
+          </Button>
+          <Button variant="outline" color="gray">
             Documentation
-          </wa-button>
+          </Button>
         </div>
       </div>
       <img className={styles.image} src="https://enterprise.atinary.com/sdlabs/assets/images/group.svg" />
     </div>
   );
-};
+}

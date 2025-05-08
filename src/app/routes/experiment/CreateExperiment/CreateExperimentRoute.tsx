@@ -1,3 +1,4 @@
+import { Button } from '@mantine/core';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import { Parameter } from '../../../../global';
@@ -91,15 +92,14 @@ export default function CreateExperimentRoute() {
                 <RightPanel>
                   <div className="wa-cluster wa-gap-xs">
                     {onContinue && (
-                      <wa-button variant="brand" onClick={onContinue}>
+                      <Button onClick={onContinue} rightSection={<wa-icon name="arrow-right" slot="suffix"></wa-icon>}>
                         Continue
-                        <wa-icon name="arrow-right" slot="suffix"></wa-icon>
-                      </wa-button>
+                      </Button>
                     )}
                     {currentStep !== 'parameters' && (
-                      <wa-button variant="neutral" appearance="filled" onClick={onBack}>
-                        Go back
-                      </wa-button>
+                      <Button variant="subtle" onClick={onBack}>
+                        Back
+                      </Button>
                     )}
                   </div>
                   {/* {currentStep === 'parameters' && <div>Refine your parameters.</div>} */}

@@ -1,7 +1,10 @@
 import { faker } from '@faker-js/faker';
+import { Badge, Progress } from '@mantine/core';
 import classNames from 'classnames';
 import { Link } from 'react-router';
 import { Dataset } from '../../global';
+import IconButton from '../common/components/IconButton/IconButton';
+import commonStyles from '../common/styles/common.module.css';
 import styles from './DatasetList.module.css';
 
 export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
@@ -21,19 +24,19 @@ export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
               <td data-name>
                 <div className="wa-flank:start">
                   <div className="wa-cluster wa-gap-s">
-                    <wa-icon name="file" variant="light"></wa-icon>
+                    <wa-icon name="file-csv" variant="light"></wa-icon>
                     {dataset.name}
                   </div>
                   <div style={{ width: '100%' }}>
-                    <wa-progress-bar value="70" style={{ height: 6 }}></wa-progress-bar>
+                    <Progress value={70} />
                   </div>
                 </div>
               </td>
             )}
             {index > 0 && (
               <td data-name>
-                <Link to={dataset.id} className={styles.itemLink}>
-                  <wa-icon name="file" variant="light"></wa-icon>
+                <Link to={dataset.id} className={classNames(styles.itemLink, commonStyles.linkTransparent)}>
+                  <wa-icon name="file-csv" variant="light"></wa-icon>
                   {dataset.name}
                 </Link>
               </td>
@@ -41,18 +44,30 @@ export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
             <td data-menu>
               {index > 0 && (
                 <>
-                  <wa-icon-button name="flask" variant="light" href="/experiments/create"></wa-icon-button>
-                  <wa-icon-button name="chart-simple" variant="light" href="/analytics"></wa-icon-button>
+                  <IconButton icon="flask" to="/experiments/create" size="lg">
+                    <wa-icon name="flask" variant="light"></wa-icon>
+                  </IconButton>
+                  <IconButton to="/analytics" size="lg">
+                    <wa-icon name="chart-simple" variant="light"></wa-icon>
+                  </IconButton>
                 </>
               )}
             </td>
             <td data-produced-by>
-              {index > 0 &&
-                Array.from({ length: Math.floor(Math.random() * 4) }).map((_, index) => (
-                  <wa-badge key={index} appearance="filled outlined" variant="neutral">
-                    {faker.science.chemicalElement().name}_{faker.science.chemicalElement().name}
-                  </wa-badge>
-                ))}
+              <div>
+                {index > 0 &&
+                  Array.from({ length: Math.floor(Math.random() * 4) }).map((_, index) => (
+                    <Badge
+                      key={index}
+                      size="sm"
+                      color="var(--mantine-color-gray-6)"
+                      autoContrast
+                      leftSection={<wa-icon name="flask" variant="light"></wa-icon>}
+                    >
+                      {faker.science.chemicalElement().name}_{faker.science.chemicalElement().name}
+                    </Badge>
+                  ))}
+              </div>
             </td>
           </tr>
         ))}

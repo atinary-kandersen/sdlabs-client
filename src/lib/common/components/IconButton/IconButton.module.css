@@ -1,0 +1,21 @@
+.iconButton {
+  --ai-bg: transparent;
+  --ai-hover: rgb(200, 200, 200, 0.2);
+
+  &[aria-current='page'] {
+    --ai-bg: var(--mantine-primary-color-5);
+    --ai-hover: var(--ai-bg);
+
+    wa-icon {
+      color: white;
+    }
+  }
+
+  &:not([aria-current='page']):hover {
+    color: var(--wa-color-gray-40);
+  }
+
+  wa-icon {
+    color: var(--mantine-color-gray-6);
+  }
+}

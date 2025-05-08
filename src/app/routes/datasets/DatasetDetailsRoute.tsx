@@ -1,3 +1,4 @@
+import { Button } from '@mantine/core';
 import DatasetMapping from '../../../lib/dataset/Mapping/DatasetMapping';
 import { DatasetDefinition } from '../../../lib/dataset/Mapping/types';
 import { Page } from '../../components/page/Page';
@@ -11,7 +12,7 @@ export default function DatasetDetailsRoute() {
             <DatasetMapping datasetDefinition={datasetDefinition} />
           </div>
           <div style={{ flex: 1 }}>
-            <wa-button variant="brand">Save</wa-button>
+            <Button>Continue</Button>
           </div>
         </div>
       </Page.Content>

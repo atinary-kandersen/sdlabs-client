@@ -1,34 +1,12 @@
 :root {
-  --ati-background-color: #f5f9fb;
-  --ati-header-background-color: var(--wa-color-blue-95);
+  --ati-background-color: #fafafa;
   --ati-content-padding-block: 2rem;
   --ati-content-padding-inline: 3rem;
   --ati-content-max-width: 2400px;
   --ati-content-min-width: 400px;
   --ati-nav-bar-width: 56px;
 
-  /**
-   * Awesome Web components
-   */
-  --wa-form-control-border-radius: var(--wa-border-radius-s);
-  --wa-form-control-label-color: var(--wa-color-gray-30);
-  --wa-font-family-body: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --wa-panel-border-radius: var(--wa-border-radius-s);
-
-  line-height: 1.5;
-  font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-underline-offset: 2px;
-
-  overflow-y: scroll;
 }
 
 /* https://backers.webawesome.com/docs/usage#waiting-for-components-to-load */
@@ -49,9 +27,9 @@ a:hover {
 }
 
 body {
-  font-family: var(--wa-font-family-body);
-  font-size: var(--wa-font-size-m);
-  font-weight: var(--wa-font-weight-body);
+  /* font-family: font-family-body);
+  font-size: font-size-m);
+  font-weight: font-weight-body); */
   background-color: var(--ati-background-color);
   margin: 0;
   display: flex;
@@ -63,6 +41,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
+
+  text-underline-offset: 2px;
+  overflow-y: scroll;
 }
 
 #root {
@@ -103,15 +84,4 @@ table {
       }
     }
   }
-}
-
-kbd {
-  font-size: 0.7rem;
-  line-height: 1;
-  font-weight: 600;
-  color: #888;
-}
-
-wa-icon-button {
-  --background-color-hover: rgba(150, 150, 150, 0.1);
 }

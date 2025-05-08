@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "setup": "npm rum openapi",
+    "setup": "npm rum openapi & npm run update:icons",
     "vite": "vite",
     "dev": "concurrently \"vite\" \"npm run json-server\" \"npm run socket-mirror\" --kill-others",
     "build": "tsc -b && vite build",
@@ -13,9 +13,14 @@
     "format": "eslint --fix . && prettier --write .",
     "json-server": "npx json-server dev/json-server.json --port 3001",
     "socket-mirror": "node dev/socketMirror.js",
-    "openapi": "npx openapi-typescript \"./dev/openapi.yaml\" --output \"./src/generated/openapi.d.ts\""
+    "openapi": "npx openapi-typescript \"./dev/openapi.yaml\" --output \"./src/generated/openapi.d.ts\"",
+    "update:icons": "npm update '@awesome.me/kit-3979d6528f'"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@mantine/core": "^8.0.0",
+    "@mantine/dropzone": "^8.0.0",
+    "@mantine/hooks": "^8.0.0",
     "classnames": "^2.5.1",
     "openapi-fetch-typescript": "^0.0.12",
     "openapi-react-query": "^0.3.1",

@@ -1,3 +1,4 @@
+import { Divider } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router';
 import { InferOutput, picklist, safeParse } from 'valibot';
@@ -26,7 +27,7 @@ export default function ExperimentDetailsRoute() {
   const onSelectedConfigurationPath = (configurationPath: string) => navigate(configurationPath);
 
   if (query.isLoading) {
-    return <wa-spinner style={{ fontSize: '3rem' }}></wa-spinner>;
+    return <div>Loading...</div>;
   } else if (!query.data) {
     return <h4>Error loading experiment</h4>;
   }
@@ -39,6 +40,7 @@ export default function ExperimentDetailsRoute() {
         <ExperimentDetailsHeader name={experimentDetails.name} />
 
         <ExperimentNavigation selectedConfigurationPath={selectedConfigurationPath} onSelectedConfigurationPath={onSelectedConfigurationPath} />
+        <Divider />
         {/* <wa-tab-group>
           <wa-tab panel="general">Home</wa-tab>
           <wa-tab panel="custom">Insights</wa-tab>

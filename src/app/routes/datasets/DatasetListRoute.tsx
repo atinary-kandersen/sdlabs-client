@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
-import { Link, Outlet, useLocation } from 'react-router';
-import commonStyles from '../../../lib/common/styles/common.module.css';
+import { Group, Stack, Text } from '@mantine/core';
+import { Dropzone, MIME_TYPES } from '@mantine/dropzone';
+import { useNavigate } from 'react-router';
 import DatasetList from '../../../lib/dataset/DatasetList';
-import UploadDatasetBox from '../../../lib/dataset/UploadDatasetBox';
 import { Page } from '../../components/page/Page';
 
 export function fakeUser() {
@@ -37,31 +37,33 @@ const datasets = Array.from({ length: 10 }).map(() => {
 });
 
 export default function DatasetListRoute() {
-  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <Page>
       <Page.Content>
-        <div className="wa-stack wa-gap-2xl">
-          <Link to="mapping" state={{ backgroundPathname: location.pathname }} className={commonStyles.linkTransparent}>
-            <UploadDatasetBox />
-          </Link>
-          <div className="wa-split">
-            <div className="wa-cluster wa-gap-xl">
-              <div className="wa-heading-m">Datasets</div>
-              <div className="wa-cluster wa-gap-s">
-                <div>
-                  <wa-input type="text" clearable size="small" placeholder="Search datasets">
-                    <wa-icon name="search" slot="prefix" appearance="regular"></wa-icon>
-                  </wa-input>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <DatasetList datasets={datasets} />
+        <Stack gap="xl">
+          <Dropzone
+            onDrop={() => navigate('mapping')}
+            accept={[MIME_TYPES.csv]}
+            maxSize={5 * 1024 ** 2}
+            style={{ cursor: 'pointer', background: 'var(--mantine-color-blue-0)', borderWidth: 2 }}
+          >
+            <Group justify="center" gap="xl" mih={150} style={{ pointerEvents: 'none' }}>
+              <wa-icon name="upload" color="var(--mantine-color-gray-5)" />
+              <Stack gap="0.3rem">
+                <Text size="xl" inline>
+                  Drag your dataset here or click to select files
+                </Text>
+                <Text size="sm" c="dimmed" inline mt={7}>
+                  Attach as many files as you like, each file should not exceed 5mb
+                </Text>
+              </Stack>
+            </Group>
+          </Dropzone>
 
-        <Outlet />
+          <DatasetList datasets={datasets} />
+        </Stack>
       </Page.Content>
     </Page>
   );

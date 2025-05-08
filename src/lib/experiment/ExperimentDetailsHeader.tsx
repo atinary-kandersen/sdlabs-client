@@ -1,3 +1,4 @@
+import { Button } from '@mantine/core';
 import styles from './ExperimentDetailsHeader.module.css';
 
 const ExperimentDetailsHeader = ({ name }: { name: string }) => {
@@ -7,12 +8,12 @@ const ExperimentDetailsHeader = ({ name }: { name: string }) => {
         <div className="wa-cluster">
           {/* <wa-icon name="flask" variant="regular" style={{ color: 'var(--wa-color-brand-fill-loud)', fontSize: 25 }} /> */}
           <img src="https:enterprise.atinary.com/sdlabs/assets/images/dashboard/campaigns.png" className={styles.icon} />
-          <h3 className={styles.heading}>{name}</h3>
+          <h1 className={styles.heading}>{name}</h1>
         </div>
         <div>
-          <wa-button variant="brand" style={{ minWidth: 250, maxWidth: 300, height: '3rem' }} pill>
+          <Button variant="brand" style={{ minWidth: 250, maxWidth: 300, height: '3rem' }} radius="xl">
             Run optimization
-          </wa-button>
+          </Button>
         </div>
       </div>
     </div>

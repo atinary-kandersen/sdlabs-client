@@ -1,3 +1,4 @@
+import { CloseButton } from '@mantine/core';
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 import { Link, To } from 'react-router';
@@ -23,8 +24,8 @@ export default function ListItem({
   const Item = (
     <div className="wa-flank:end" style={{ padding: 'var(--wa-space-xs)' }}>
       <div className="wa-cluster">{children}</div>
-      <div>{typeof onRemove === 'function' && <wa-icon name="remove" appearance="regular" onClick={onRemoveClick}></wa-icon>}</div>
-      {arrowRight && <wa-icon-button name="arrow-right" appearance="regular"></wa-icon-button>}
+      <div>{typeof onRemove === 'function' && <CloseButton onClick={onRemoveClick} />}</div>
+      {arrowRight && <wa-icon name="arrow-right" variant="regular"></wa-icon>}
     </div>
   );
 
