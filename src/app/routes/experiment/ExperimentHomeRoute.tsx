@@ -1,22 +1,36 @@
-import { Timeline } from '@mantine/core';
+import { faker } from '@faker-js/faker';
+import { Space, Text, Timeline } from '@mantine/core';
 import ExperimentContextInput from '../../../lib/experiment/ExperimentContextInput';
 import ExperimentMeasurements from '../../../lib/experiment/ExperimentMeasurements';
-import styles from './ExperimentHomeRoute.module.css';
+
+const iterations = Array.from({ length: 5 });
 
 export default function ExperimentHomeRoute() {
   return (
     <div className="wa-flank:end wa-align-items-start wa-gap-3xl">
       <div style={{ flex: 5 }}>
-        <Timeline active={0} bulletSize={20} lineWidth={2}>
-          <Timeline.Item title="Iteration 5" className={styles.timelineItem}>
-            <div style={{ padding: '2rem' }}>
-              <ExperimentMeasurements />
-            </div>
-          </Timeline.Item>
-          <Timeline.Item title="Iteration 4"></Timeline.Item>
-          <Timeline.Item title="Iteration 3"></Timeline.Item>
-          <Timeline.Item title="Iteration 2"></Timeline.Item>
-          <Timeline.Item title="Iteration 1"></Timeline.Item>
+        <Space h="11px"></Space>
+        <Timeline bulletSize={30} lineWidth={2} autoContrast>
+          {iterations.map((_, index) => {
+            const iterationNumber = iterations.length - index;
+            return (
+              <Timeline.Item title={`Iteration ${iterationNumber}`} bullet={iterationNumber} lineVariant="dashed">
+                {index === 0 && (
+                  <>
+                    <Space h="15px"></Space>
+                    <ExperimentMeasurements />
+                  </>
+                )}
+                {index > 0 && (
+                  <div className="wa-cluster wa-gap-s">
+                    <Text size="sm" c="dimmed">
+                      {faker.lorem.sentence(12)}
+                    </Text>
+                  </div>
+                )}
+              </Timeline.Item>
+            );
+          })}
         </Timeline>
       </div>
       <div style={{ flex: 2 }} className="wa-stack wa-gap-3xl">

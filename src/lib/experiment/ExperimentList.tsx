@@ -1,10 +1,13 @@
-import { ActionIcon, Badge } from '@mantine/core';
+import { faker } from '@faker-js/faker';
+import { Badge, memoize } from '@mantine/core';
 import classNames from 'classnames';
 import { Link } from 'react-router';
 import { Experiment, ExperimentId } from '../../global';
 import IconButton from '../common/components/IconButton/IconButton';
 import commonStyles from '../common/styles/common.module.css';
 import styles from './ExperimentList.module.css';
+
+const createFakeLeads = memoize((count: number) => faker.helpers.multiple(() => faker.person.fullName(), { count }));
 
 export default function ExperimentList({
   experiments,
@@ -15,6 +18,8 @@ export default function ExperimentList({
   toggleWatch?: (experimentId: ExperimentId) => void;
   watchList?: ExperimentId[];
 }) {
+  const leads = createFakeLeads(experiments.length);
+
   return (
     <table className={styles.table}>
       <thead>
@@ -22,19 +27,23 @@ export default function ExperimentList({
           <th data-status>Status</th>
           <th data-name>Name</th>
           {watchList && <th data-watch>Watch</th>}
+          <th data-lead>Lead</th>
           <th data-iterations>Iterations</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        {experiments.map(experiment => {
+        {experiments.map((experiment, index) => {
           const watched = watchList?.includes(experiment.id) || false;
+
           return (
             <tr key={experiment.id} className={classNames({ [styles.watched]: watched })}>
               <td data-status>
-                <Badge size="sm" fullWidth color="lime" radius="sm">
-                  Running
-                </Badge>
+                {Math.random() > 0.5 && (
+                  <Badge size="sm" radius="sm" color="lime.2" autoContrast fullWidth>
+                    Running
+                  </Badge>
+                )}
               </td>
               <td data-name>
                 <Link to={experiment.id} className={classNames(styles.itemLink, commonStyles.linkTransparent)}>
@@ -42,6 +51,7 @@ export default function ExperimentList({
                   {experiment.name}
                 </Link>
               </td>
+
               {watchList && (
                 <td data-watch>
                   <IconButton onClick={() => typeof toggleWatch === 'function' && toggleWatch(experiment.id)}>
@@ -49,20 +59,25 @@ export default function ExperimentList({
                       name={watched ? 'eye' : 'eye-slash'}
                       variant={watched ? 'regular' : 'light'}
                       size="lg"
-                      style={{ color: watched ? 'var(--mantine-color-green-5)' : 'var(--mantine-color-gray-5)' }}
+                      style={{ color: watched ? 'var(--mantine-color-green-7)' : 'var(--mantine-color-gray-5)' }}
                     ></wa-icon>
                   </IconButton>
                 </td>
               )}
+              <td data-lead>
+                <Badge size="sm" radius="sm" color="cyan.1" autoContrast style={{ minWidth: 90 }}>
+                  {leads[index]}
+                </Badge>
+              </td>
               <td data-iteration>
-                <Badge color="gray" size="sm" variant="outline">
-                  {Math.floor(Math.random() * 20)}
+                <Badge color="gray.2" size="sm" radius="sm" autoContrast>
+                  {Math.floor(experiment.name.length / 2)}
                 </Badge>
               </td>
               <td>
-                <ActionIcon size="sm" color="gray" variant="transparent">
+                <IconButton>
                   <wa-icon name="ellipsis-vertical"></wa-icon>
-                </ActionIcon>
+                </IconButton>
               </td>
             </tr>
           );

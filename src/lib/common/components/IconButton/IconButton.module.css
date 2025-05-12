@@ -3,7 +3,7 @@
   --ai-hover: rgb(200, 200, 200, 0.2);
 
   &[aria-current='page'] {
-    --ai-bg: var(--mantine-primary-color-5);
+    --ai-bg: var(--mantine-primary-color-filled);
     --ai-hover: var(--ai-bg);
 
     wa-icon {

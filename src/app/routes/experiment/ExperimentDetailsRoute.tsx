@@ -1,6 +1,6 @@
-import { Divider } from '@mantine/core';
+import { Center, Loader } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useNavigate, useParams } from 'react-router';
+import { Outlet, useLocation, useParams } from 'react-router';
 import { InferOutput, picklist, safeParse } from 'valibot';
 import ExperimentDetailsHeader from '../../../lib/experiment/ExperimentDetailsHeader';
 import ExperimentNavigation from '../../../lib/experiment/ExperimentNavigation';
@@ -14,7 +14,6 @@ type ConfigurationNav = InferOutput<typeof configurationPathSchema>;
 export default function ExperimentDetailsRoute() {
   const experimentId = useParams<{ experimentId: string }>().experimentId!;
   const query = useExperimentDetails(experimentId);
-  const navigate = useNavigate();
   const location = useLocation();
   const [selectedConfigurationPath, setSelectedConfigurationPath] = useState<null | ConfigurationNav>(null);
 
@@ -24,10 +23,12 @@ export default function ExperimentDetailsRoute() {
     setSelectedConfigurationPath(parseResult.success ? parseResult.output : null);
   }, [experimentId, location]);
 
-  const onSelectedConfigurationPath = (configurationPath: string) => navigate(configurationPath);
-
   if (query.isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Center w="100%" h="100%">
+        <Loader />
+      </Center>
+    );
   } else if (!query.data) {
     return <h4>Error loading experiment</h4>;
   }
@@ -37,24 +38,15 @@ export default function ExperimentDetailsRoute() {
   return (
     <Page>
       <Page.Content>
-        <ExperimentDetailsHeader name={experimentDetails.name} />
+        <div className="wa-stack wa-gap-xl">
+          <ExperimentDetailsHeader name={experimentDetails.name} />
 
-        <ExperimentNavigation selectedConfigurationPath={selectedConfigurationPath} onSelectedConfigurationPath={onSelectedConfigurationPath} />
-        <Divider />
-        {/* <wa-tab-group>
-          <wa-tab panel="general">Home</wa-tab>
-          <wa-tab panel="custom">Insights</wa-tab>
-          <wa-tab panel="advanced">History</wa-tab>
-          <wa-tab panel="advanced">Configuration</wa-tab>
+          <ExperimentNavigation selectedConfigurationPath={selectedConfigurationPath} />
 
-          <wa-tab-panel name="general">This is the general tab panel.</wa-tab-panel>
-          <wa-tab-panel name="custom">This is the custom tab panel.</wa-tab-panel>
-          <wa-tab-panel name="advanced">This is the advanced tab panel.</wa-tab-panel>
-          <wa-tab-panel name="disabled">This is a disabled tab panel.</wa-tab-panel>
-        </wa-tab-group> */}
-        {/* <wa-divider></wa-divider> */}
-        <div style={{ height: '2rem' }}></div>
-        <Outlet />
+          {/* <Divider /> */}
+          <div style={{ height: '2rem' }}></div>
+          <Outlet />
+        </div>
       </Page.Content>
     </Page>
   );

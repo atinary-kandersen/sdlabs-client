@@ -8,13 +8,11 @@ const ExperimentDetailsHeader = ({ name }: { name: string }) => {
         <div className="wa-cluster">
           {/* <wa-icon name="flask" variant="regular" style={{ color: 'var(--wa-color-brand-fill-loud)', fontSize: 25 }} /> */}
           <img src="https:enterprise.atinary.com/sdlabs/assets/images/dashboard/campaigns.png" className={styles.icon} />
-          <h1 className={styles.heading}>{name}</h1>
+          <h2 className={styles.heading}>{name}</h2>
         </div>
-        <div>
-          <Button variant="brand" style={{ minWidth: 250, maxWidth: 300, height: '3rem' }} radius="xl">
-            Run optimization
-          </Button>
-        </div>
+        <Button variant="brand" style={{ minWidth: 250, maxWidth: 300, height: '3rem', boxShadow: 'var(--mantine-shadow-md)', fontSize: '1rem' }}>
+          Run optimization
+        </Button>
       </div>
     </div>
   );

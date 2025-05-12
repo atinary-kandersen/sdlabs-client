@@ -1,4 +1,4 @@
-import { Button, Center, Flex, Grid, Group, SegmentedControl, Stack } from '@mantine/core';
+import { Button, SegmentedControl } from '@mantine/core';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { Experiment, ExperimentId } from '../../../global';
@@ -29,22 +29,16 @@ export default function ExperimentListRoute() {
   return (
     <Page>
       <Page.Content>
-        <Stack gap="xl">
-          <Grid>
-            <Grid.Col span={8}>
-              <Group>
-                <h3>Experiments</h3>
-                <SegmentedControl data={filters} value={activeFilter} onChange={filter => navigate({ search: `?filter=${filter}` })} />
-              </Group>
-            </Grid.Col>
-            <Grid.Col span={4}>
-              <Flex justify="flex-end" wrap="nowrap" align="center">
-                <Center>
-                  <Button onClick={() => navigate('create')}>Create experiment</Button>
-                </Center>
-              </Flex>
-            </Grid.Col>
-          </Grid>
+        <div className="wa-stack wa-gap-2xl">
+          <div className="wa-flank:end">
+            <div className="wa-cluster">
+              <h2>Experiments</h2>
+              <SegmentedControl data={filters} value={activeFilter} onChange={filter => navigate({ search: `?filter=${filter}` })} />
+            </div>
+            <div>
+              <Button onClick={() => navigate('create')}>Create experiment</Button>
+            </div>
+          </div>
 
           <div>
             {query.isLoading && <p>Loading ...</p>}
@@ -54,7 +48,7 @@ export default function ExperimentListRoute() {
             {/* {query.data && <ExperimentList experiments={query.data.results} />} */}
             {query.data && <ExperimentList experiments={query.data as unknown as Experiment[]} toggleWatch={toggleWatch} watchList={watchList} />}
           </div>
-        </Stack>
+        </div>
       </Page.Content>
     </Page>
   );

@@ -1,0 +1,4 @@
+.itemBullet {
+  background-color: var(--mantine-color-gray-2);
+  color: var(--mantine-color-gray-7);
+}

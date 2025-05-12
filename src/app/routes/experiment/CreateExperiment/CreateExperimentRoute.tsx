@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Button } from '@mantine/core';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
@@ -102,7 +103,12 @@ export default function CreateExperimentRoute() {
                       </Button>
                     )}
                   </div>
+
                   {/* {currentStep === 'parameters' && <div>Refine your parameters.</div>} */}
+
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <p key={index}>{faker.lorem.sentence(12)}</p>
+                  ))}
                 </RightPanel>
               </div>
             </div>

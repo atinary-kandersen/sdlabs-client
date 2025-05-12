@@ -10,18 +10,18 @@ export default function SideNavPanel() {
         className={styles.logo}
       />
       <div className="wa-stack wa-gap-2xs wa-align-items-center">
-        <IconButton to="/" icon="home" tooltip="Home" />
-        <IconButton to="/experiments" icon="flask" tooltip="Experiments" />
-        <IconButton to="/datasets" icon="table" tooltip="Datasets" />
-        <IconButton to="/analytics" icon="chart-mixed" tooltip="Analytics" />
+        <IconButton to="/" icon="home" tooltip="Home" size="xl" />
+        <IconButton to="/experiments" icon="flask" tooltip="Experiments" size="xl" />
+        <IconButton to="/datasets" icon="table" tooltip="Datasets" size="xl" />
+        <IconButton to="/analytics" icon="chart-mixed" tooltip="Analytics" size="xl" />
       </div>
       <div className={styles.bottom}>
         <div className="wa-stack wa-gap-2xs wa-align-items-center">
-          <IconButton icon="cog" tooltip="Settings" to="settings" />
-          <IconButton to="/documentation" icon="book" tooltip="Documentation" />
+          <IconButton icon="cog" tooltip="Settings" to="settings" size="xl" />
+          <IconButton to="/documentation" icon="book" tooltip="Documentation" size="xl" />
         </div>
         <div className={styles.divider}></div>
-        <IconButton icon="user" tooltip="Profile" />
+        <IconButton icon="user" tooltip="Profile" size="xl" />
       </div>
     </div>
   );

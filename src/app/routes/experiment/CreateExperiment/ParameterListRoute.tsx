@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { useContext } from 'react';
 import { Parameter } from '../../../../global';
 import MultipleParameterNameInput from '../../../../lib/experiment/parameters/MultipleParameterNameInput';
@@ -12,7 +13,7 @@ export default function ParameterListRoute() {
      * New parameters are added as as numerical by default.
      * The parameter ids are prefixed with "new" to indicate that they are new and not yet saved.
      */
-    const parameters: Parameter[] = names.map((name, index) => ({ id: `new${new Date().getTime() + index}`, name, type: 'numerical' }));
+    const parameters: Parameter[] = names.map(name => ({ id: `new${faker.string.uuid()}`, name, type: 'numerical' }));
     context.setParameters([...context.data.parameters, ...parameters]);
   };
 

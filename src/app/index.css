@@ -55,24 +55,29 @@ body {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
+  /* a:hover {
     color: #747bff;
-  }
+  } */
   button {
     background-color: #f9f9f9;
   }
 }
 
 table {
+  th,
+  td {
+    white-space: nowrap;
+  }
+
   th {
-    padding-block: var(--wa-space-l);
+    padding-block: 1rem;
   }
 
   tbody {
     td {
       min-height: 48px;
       vertical-align: middle;
-      padding: var(--wa-space-s);
+      padding: var(--mantine-spacing-xs);
     }
 
     tr:hover {

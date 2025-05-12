@@ -21,7 +21,7 @@ export default function IconButton({
     ActionIconProps &
     HTMLAttributes<ActionIconProps>
 >) {
-  props = { ...props, className: styles.iconButton, size: props.size || '40px' };
+  props = { ...props, className: styles.iconButton, size: props.size || 'lg' };
   let Button;
   if (props.to) {
     const { to, ...newProps } = props;

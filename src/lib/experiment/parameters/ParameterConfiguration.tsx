@@ -1,4 +1,4 @@
-import { Select, TextInput } from '@mantine/core';
+import { SegmentedControl, TextInput } from '@mantine/core';
 import { ChangeEvent } from 'react';
 import { Parameter, ParameterType } from '../../../global';
 
@@ -15,16 +15,14 @@ export default function ParameterConfiguration({ parameter, onChange }: { parame
           ></TextInput>
         </div>
         <div>
-          <Select
-            required
-            placeholder="Type"
+          <SegmentedControl
             data={[
-              { value: 'categorical', label: 'Categorical' },
-              { value: 'numerical', label: 'Numerical' }
+              { value: 'numerical', label: 'Numerical' },
+              { value: 'categorical', label: 'Categorical' }
             ]}
             value={parameter.type}
             onChange={value => onChange({ type: value?.toLowerCase() as ParameterType })}
-          ></Select>
+          />
         </div>
       </div>
     </>

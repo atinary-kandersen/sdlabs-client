@@ -1,0 +1,14 @@
+.navButton {
+  text-transform: capitalize;
+
+  &:not([aria-current='page']):hover {
+    background: var(--mantine-color-blue-0);
+  }
+
+  &[aria-current='page'],
+  .active {
+    color: white !important;
+    --button-hover-color: white !important;
+    background: var(--mantine-primary-color-filled);
+  }
+}

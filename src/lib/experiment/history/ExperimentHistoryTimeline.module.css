@@ -1,0 +1,5 @@
+.timelineItem {
+  :hover {
+    cursor: pointer;
+  }
+}

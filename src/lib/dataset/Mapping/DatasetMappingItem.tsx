@@ -40,7 +40,7 @@ export default function MappingItem({
           onChange={value => changeColumnType(value as ColumnType)}
         />
       </td>
-      <td className={styles.mappingTableCell}>
+      <td className={styles.mappingTableCell} style={{ minWidth: 50 }}>
         {isValid && <wa-icon name="circle-check" style={{ fontSize: '1.2rem', color: item.disabled ? 'lightgray' : 'green' }}></wa-icon>}
       </td>
     </tr>

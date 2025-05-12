@@ -9,7 +9,7 @@
     white-space: nowrap;
 
     &[data-name] {
-      width: 100%;
+      width: 50%;
 
       a {
         display: flex;

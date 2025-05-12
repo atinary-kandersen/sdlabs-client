@@ -1,0 +1,9 @@
+.dropzone {
+  cursor: pointer;
+  background: var(--mantine-color-blue-0);
+  border-width: 2px;
+
+  &:hover {
+    background: var(--mantine-color-blue-1);
+  }
+}

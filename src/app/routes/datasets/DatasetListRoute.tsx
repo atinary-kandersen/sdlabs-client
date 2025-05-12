@@ -1,11 +1,19 @@
 import { faker } from '@faker-js/faker';
-import { Group, Stack, Text } from '@mantine/core';
-import { Dropzone, MIME_TYPES } from '@mantine/dropzone';
+import { ScrollArea, SegmentedControl } from '@mantine/core';
 import { useNavigate } from 'react-router';
+import DatasetDropzone from '../../../lib/dataset/DatasetDropzone/DatasetDropzone';
 import DatasetList from '../../../lib/dataset/DatasetList';
 import { Page } from '../../components/page/Page';
 
-export function fakeUser() {
+export type FakeUser = {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  avatar: string;
+};
+
+export function fakeUser(): FakeUser {
   return {
     userId: faker.string.uuid(),
     firstName: faker.person.firstName(),
@@ -42,28 +50,16 @@ export default function DatasetListRoute() {
   return (
     <Page>
       <Page.Content>
-        <Stack gap="xl">
-          <Dropzone
-            onDrop={() => navigate('mapping')}
-            accept={[MIME_TYPES.csv]}
-            maxSize={5 * 1024 ** 2}
-            style={{ cursor: 'pointer', background: 'var(--mantine-color-blue-0)', borderWidth: 2 }}
-          >
-            <Group justify="center" gap="xl" mih={150} style={{ pointerEvents: 'none' }}>
-              <wa-icon name="upload" color="var(--mantine-color-gray-5)" />
-              <Stack gap="0.3rem">
-                <Text size="xl" inline>
-                  Drag your dataset here or click to select files
-                </Text>
-                <Text size="sm" c="dimmed" inline mt={7}>
-                  Attach as many files as you like, each file should not exceed 5mb
-                </Text>
-              </Stack>
-            </Group>
-          </Dropzone>
-
-          <DatasetList datasets={datasets} />
-        </Stack>
+        <div className="wa-stack wa-gap-2xl">
+          <div className="wa-cluster">
+            <h2>Datasets</h2>
+            <SegmentedControl data={['All', 'Mine']} value="All" />
+          </div>
+          <ScrollArea h="calc(100vh - 300px)">
+            <DatasetList datasets={datasets} />
+          </ScrollArea>
+          <DatasetDropzone onDrop={() => navigate('create')} />
+        </div>
       </Page.Content>
     </Page>
   );

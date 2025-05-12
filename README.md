@@ -9,7 +9,7 @@
 - `lint`: Checks all code formatting.
 - `format`: Formats all code.
 - `json-server`: Launches a `json-server` instance configured with `./dev/json-server.json`.
-- `socket-mirror`: Launches a `Socket.IO` web server that mirrots all incoming messages.
+- `socket-mirror`: Launches a `Socket.IO` web server that mirrors all incoming messages.
 
 ###
 
@@ -91,11 +91,26 @@ src
         └── formatNumber.ts
 ```
 
+## VS Code setup
+
+### Extensions
+
+1. Install recommended extension in `.vscode/extensions.json`.
+
+## Resources
+
+Please read and understand the following resources, as they are used extensively in the app.
+
+- [Practical React Query](https://tkdodo.eu/blog/practical-react-query)
+- [Mantine | Learn](https://mantine.dev/getting-started/#learn)
+
 ## Architectural principles
+
+## Mantine
 
 ## CSS
 
-A combinataion of global styles and CSS Modules is used, CSS Modules being how component-specific styles are scoped to its component.
+A combination of global styles and CSS Modules is used, CSS Modules being how component-specific styles are scoped to its component.
 
 ### Layout
 
@@ -105,7 +120,7 @@ We use [Web Awesome's layout style utilities](https://backers.webawesome.com/doc
 
 We use [Font Awesome](https://fontawesome.com/icons) for icons and Web Awesome's [`wa-icon`](https://backers.webawesome.com/docs/components/icon/) web component to render icons. The reason is that the `wa-icon` component works well with FontAwsome.
 
-## Ccontainer components and Presentational components
+## Container components and Presentational components
 
 There are two types of components, _container_ components and _presentational_ components.
 

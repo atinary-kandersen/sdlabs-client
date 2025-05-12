@@ -1,4 +1,5 @@
-import { createTheme } from '@mantine/core';
+import { createTheme, Timeline } from '@mantine/core';
+import timelineStyles from '../../lib/common/components/Timeline/Timeline.module.css';
 
 /**
  * https://mantine.dev/theming/theme-object/
@@ -7,17 +8,13 @@ import { createTheme } from '@mantine/core';
 export default createTheme({
   fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
   fontSmoothing: true,
-  activeClassName: 'active'
+  activeClassName: 'active',
 
-  // components: {
-  //   ActionIcon: ActionIcon.extend({
-  //     styles: (theme, { color }) => ({
-  //       root: {
-  //         '&:hover': {
-  //           backgroundColor: theme.colors[color || 'gray'][0]
-  //         }
-  //       }
-  //     })
-  //   })
-  // }
+  components: {
+    Timeline: Timeline.extend({
+      classNames: {
+        itemBullet: timelineStyles.itemBullet
+      }
+    })
+  }
 });

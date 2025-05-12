@@ -1,11 +1,48 @@
-import { TextInput } from '@mantine/core';
+import { faker } from '@faker-js/faker';
+import { Avatar, Text, TextInput } from '@mantine/core';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 import commonStyles from '../common/styles/common.module.css';
 import styles from './ExperimentMeasurements.module.css';
+
+function Typewriter({ text, speed = 10 }: { text: string; speed?: number }) {
+  const [letters, setLetters] = useState<string[]>([]);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    const timeout = setTimeout(() => {
+      interval = setInterval(() => {
+        setLetters(prev => {
+          if (prev.length < text.length) {
+            return [...prev, text[prev.length]];
+          } else {
+            clearInterval(interval);
+            return prev;
+          }
+        });
+      }, speed);
+    }, 1500);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
+  }, [text, speed]);
+
+  return <>{letters}</>;
+}
 
 const ExperimentMeasurements = () => {
   return (
     <div className={classNames(styles.scrollContainer, commonStyles.focusBox)}>
+      <div className={classNames(styles.header, 'wa-flank:start', 'wa-gap-m')}>
+        <Avatar color="grape.9">
+          <wa-icon name="sparkles" variant="regular" style={{ color: 'var(--mantine-color-grape-6)' }}></wa-icon>
+        </Avatar>
+        <span>
+          <Text c="var(--mantine-color-gray-7)">{<Typewriter text={faker.lorem.sentence(30)} />}</Text>
+        </span>
+      </div>
       <table>
         <thead>
           <tr>
@@ -28,10 +65,10 @@ const ExperimentMeasurements = () => {
               <td>{Math.random().toFixed(2)}</td>
               <td>{Math.random().toFixed(1)}</td>
               <td>
-                <TextInput size="sm" value={Math.random().toFixed(1)}></TextInput>
+                <TextInput size="sm" defaultValue={Math.random().toFixed(1)}></TextInput>
               </td>
               <td>
-                <TextInput size="sm" value={Math.random().toFixed(4)}></TextInput>
+                <TextInput size="sm" defaultValue={Math.random().toFixed(4)}></TextInput>
               </td>
               <td className={styles.notes}>
                 <wa-icon name="pen-to-square" variant="regular" style={{ color: 'gray' }}></wa-icon>
@@ -40,8 +77,6 @@ const ExperimentMeasurements = () => {
           ))}
         </tbody>
       </table>
-
-      <div className={classNames(styles.footer, 'wa-grid', 'wa-align-items-end', 'wa-gap-3xl')}></div>
     </div>
   );
 };

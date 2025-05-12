@@ -16,7 +16,6 @@
   }
 
   td {
-    padding: 1rem;
     white-space: nowrap;
 
     &[data-status] {

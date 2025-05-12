@@ -5,6 +5,7 @@ import DatasetDetailsRoute from './routes/datasets/DatasetDetailsRoute.tsx';
 import CreateExperimentRoute from './routes/experiment/CreateExperiment/CreateExperimentRoute.tsx';
 import EditParameterRoute from './routes/experiment/CreateExperiment/EditParameterRoute.tsx';
 import ParameterListRoute from './routes/experiment/CreateExperiment/ParameterListRoute.tsx';
+import ExperimentHistoryRoute from './routes/experiment/ExperimentHistoryRoute.tsx';
 import ExperimentHomeRoute from './routes/experiment/ExperimentHomeRoute.tsx';
 import ExperimentInsightsRoute from './routes/experiment/ExperimentInsightsRoute.tsx';
 import ExperimentListRoute from './routes/experiment/ExperimentListRoute.tsx';
@@ -48,7 +49,7 @@ const Router = () => (
         <Route path="experiments/:experimentId" element={<ExperimentDetailsRoute />}>
           <Route index element={<ExperimentHomeRoute />} />
           <Route path="insights" element={<ExperimentInsightsRoute />} />
-          <Route path="history" element={<h1>History</h1>} />
+          <Route path="history" element={<ExperimentHistoryRoute />} />
           <Route path="parameters" element={<h1>Parameters</h1>} />
           <Route path="objectives" element={<h1>Objectives</h1>} />
           <Route path="constraints" element={<h1>Constraints</h1>} />

@@ -22,7 +22,14 @@ export default function MultipleParameterNameInput({ onEnter }: { onEnter: (name
 
   return (
     <div className="wa-stack wa-gap-xs">
-      <TextInput placeholder="Ex: pH, temperature, pressure" onKeyUp={onKeyUp} autoCorrect="off" autoComplete="off" spellCheck="false"></TextInput>
+      <TextInput
+        label="Enter parameter names"
+        placeholder="Ex: pH, temperature, pressure"
+        onKeyUp={onKeyUp}
+        autoCorrect="off"
+        autoComplete="off"
+        spellCheck="false"
+      ></TextInput>
       <div className={commonStyles.hintText}>You can enter multiple parameter names delimited by comma (,) or semi-colon (;).</div>
     </div>
   );
