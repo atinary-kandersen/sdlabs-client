@@ -5,7 +5,11 @@
 - `setup`: Runs all required scripts to run app.
 - `dev`: Launches everything needed to develop.
 - `build`: Creates a production build in the `dist` folder.
-- `preview`: Serves the built solution from the `dist` folder.
+- `preview`: Serves the built solution from the `dist` folder. Remember to run `npm run build` before.
+- `test`: Runs all tests.
+- `test:node`: Runs all Node environment tests.
+- `test:browser`: Runs all browser tests.
+- `test:e2e`: Runs all E2E tests. Remember to run `npm run build` before, as this uses the `preview` script to launch to app from dist folder.
 - `lint`: Checks all code formatting.
 - `format`: Formats all code.
 - `json-server`: Launches a `json-server` instance configured with `./dev/json-server.json`.
@@ -104,7 +108,27 @@ Please read and understand the following resources, as they are used extensively
 - [Practical React Query](https://tkdodo.eu/blog/practical-react-query)
 - [Mantine | Learn](https://mantine.dev/getting-started/#learn)
 
-## Architectural principles
+## Testing
+
+Tests are divided into three categories:
+
+- **Node tests** (`src/**/*.test.node.ts`): running in the Node environment.
+- **Browser tests** (`src/**/*.test.browser.tsx`): running in a browser. This is for testing components.
+- **E2E tests** (`src/e2e/**/*.test.e2e.ts`): which launches the entire app from the `dist` folder, and performs E2E tests on it.
+
+### Node tests
+
+Node tests test code that does not depend on the Web API (a browser), and thus can be executed in a Node environment. These tests are by far the most performant, and thus should be prioritized whenever possible.
+
+### Browser tests
+
+We test components in a real browser, not virtual environments like `jsdom` or `happy-dom`.
+
+### E2E tests
+
+E2E tests perform user-like actions in the app, including routing, and make assertions on these actions.
+
+https://playwright.dev/docs/writing-tests
 
 ## Mantine
 

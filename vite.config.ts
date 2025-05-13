@@ -3,16 +3,11 @@ import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react({
-      babel: {
-        plugins: [['module:@preact/signals-react-transform']]
-      }
-    })
-  ],
+  plugins: [react()],
   appType: 'spa',
   envPrefix: 'ATI_',
   preview: {
+    port: 4173,
     open: true
   }
 });
