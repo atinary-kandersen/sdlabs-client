@@ -3,7 +3,13 @@ import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler', { target: '19' }]]
+      }
+    })
+  ],
   appType: 'spa',
   envPrefix: 'ATI_',
   preview: {
