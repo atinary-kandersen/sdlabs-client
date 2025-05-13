@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import App from './App.tsx';
-import DatasetDetailsRoute from './routes/datasets/DatasetDetailsRoute.tsx';
-import CreateExperimentRoute from './routes/experiment/CreateExperiment/CreateExperimentRoute.tsx';
-import EditParameterRoute from './routes/experiment/CreateExperiment/EditParameterRoute.tsx';
-import ParameterListRoute from './routes/experiment/CreateExperiment/ParameterListRoute.tsx';
-import ExperimentHistoryRoute from './routes/experiment/ExperimentHistoryRoute.tsx';
-import ExperimentHomeRoute from './routes/experiment/ExperimentHomeRoute.tsx';
-import ExperimentInsightsRoute from './routes/experiment/ExperimentInsightsRoute.tsx';
-import ExperimentListRoute from './routes/experiment/ExperimentListRoute.tsx';
 import HomeRoute from './routes/home/HomeRoute.tsx';
 
+const CreateExperimentRoute = React.lazy(() => import('./routes/experiment/CreateExperiment/CreateExperimentRoute.tsx'));
+const ExperimentListRoute = React.lazy(() => import('./routes/experiment/ExperimentListRoute.tsx'));
 const ExperimentDetailsRoute = React.lazy(() => import('./routes/experiment/ExperimentDetailsRoute.tsx'));
+const ExperimentHomeRoute = React.lazy(() => import('./routes/experiment/ExperimentHomeRoute.tsx'));
+const ExperimentHistoryRoute = React.lazy(() => import('./routes/experiment/ExperimentHistoryRoute.tsx'));
+const ExperimentInsightsRoute = React.lazy(() => import('./routes/experiment/ExperimentInsightsRoute.tsx'));
+const ParameterListRoute = React.lazy(() => import('./routes/experiment/CreateExperiment/ParameterListRoute.tsx'));
+const EditParameterRoute = React.lazy(() => import('./routes/experiment/CreateExperiment/EditParameterRoute.tsx'));
 const DatasetListRoute = React.lazy(() => import('./routes/datasets/DatasetListRoute.tsx'));
+const DatasetDetailsRoute = React.lazy(() => import('./routes/datasets/DatasetDetailsRoute.tsx'));
 const AnalyticsRoute = React.lazy(() => import('./routes/analytics/AnalyticsRoute.tsx'));
 
 const Router = () => (

@@ -1,7 +1,7 @@
-import { faker } from '@faker-js/faker';
 import { Space, Text, Timeline } from '@mantine/core';
 import ExperimentContextInput from '../../../lib/experiment/ExperimentContextInput';
 import ExperimentMeasurements from '../../../lib/experiment/ExperimentMeasurements';
+import generateLoremIpsum from '../../../lib/utils/generateLoremIpsum';
 
 const iterations = Array.from({ length: 5 });
 
@@ -24,7 +24,7 @@ export default function ExperimentHomeRoute() {
                 {index > 0 && (
                   <div className="wa-cluster wa-gap-s">
                     <Text size="sm" c="dimmed">
-                      {faker.lorem.sentence(12)}
+                      {generateLoremIpsum(12)}
                     </Text>
                   </div>
                 )}

@@ -1,8 +1,8 @@
-import { faker } from '@faker-js/faker';
 import { Avatar, Text, TextInput } from '@mantine/core';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import commonStyles from '../common/styles/common.module.css';
+import generateLoremIpsum from '../utils/generateLoremIpsum';
 import styles from './ExperimentMeasurements.module.css';
 
 function Typewriter({ text, speed = 10 }: { text: string; speed?: number }) {
@@ -40,7 +40,7 @@ const ExperimentMeasurements = () => {
           <wa-icon name="sparkles" variant="regular" style={{ color: 'var(--mantine-color-grape-6)' }}></wa-icon>
         </Avatar>
         <span>
-          <Text c="var(--mantine-color-gray-7)">{<Typewriter text={faker.lorem.sentence(30)} />}</Text>
+          <Text c="var(--mantine-color-gray-7)">{<Typewriter text={generateLoremIpsum(30)} />}</Text>
         </span>
       </div>
       <table>

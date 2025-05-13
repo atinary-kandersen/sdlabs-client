@@ -1,6 +1,6 @@
 import { Button, Checkbox, Menu } from '@mantine/core';
 import { ChangeEvent, useState } from 'react';
-import { FakeUser } from '../../../app/routes/datasets/DatasetListRoute';
+import { FakeUser } from '../../../global';
 import { EventType, eventTypeColor, eventTypeIcons, eventTypeMessage, EventTypes } from './eventType';
 
 export default function ExperimentHistoryFilter({

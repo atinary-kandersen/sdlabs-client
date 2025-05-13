@@ -19,7 +19,8 @@
     "json-server": "npx json-server dev/json-server.json --port 3001",
     "socket-mirror": "node dev/socketMirror.js",
     "openapi": "npx openapi-typescript \"./dev/openapi.yaml\" --output \"./src/generated/openapi.d.ts\"",
-    "update:icons": "npm update '@awesome.me/kit-3979d6528f'"
+    "update:icons": "npm update '@awesome.me/kit-3979d6528f'",
+    "bundle-visualizer": "vite-bundle-visualizer -c vite.config.ts --sourcemap"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -40,7 +41,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
-    "@faker-js/faker": "^9.7.0",
     "@tanstack/react-query-devtools": "^5.74.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.3",
@@ -61,6 +61,7 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.0",
+    "vite-bundle-visualizer": "^1.2.1",
     "vitest": "^3.1.3",
     "vitest-browser-react": "^0.1.1"
   }

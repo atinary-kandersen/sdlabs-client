@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 import { useNavigate } from 'react-router';
 import ConfigureManuallyBox from '../../components/home/ConfigManuallyBox/ConfigureManuallyBox';
 import Hero from '../../components/home/Hero/Hero';
@@ -15,7 +14,7 @@ export default function HomeRoute() {
           <Hero />
           <div className="wa-gap-3xl">
             <div style={{ maxWidth: 600 }}>
-              <UploadBox onClick={() => navigate(`/datasets/${faker.string.ulid()}`)} />
+              <UploadBox onClick={() => navigate(`/datasets/${crypto.randomUUID()}`)} />
             </div>
             <div style={{ maxWidth: 600 }}>
               <ConfigureManuallyBox onClick={() => navigate('experiments/create')} />

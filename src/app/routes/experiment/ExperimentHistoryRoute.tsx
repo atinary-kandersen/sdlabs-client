@@ -1,26 +1,34 @@
-import { faker } from '@faker-js/faker';
 import { useState } from 'react';
+import { FakeUser } from '../../../global';
 import { EventTypes, eventTypes } from '../../../lib/experiment/history/eventType';
 import ExperimentHistoryFilter from '../../../lib/experiment/history/ExperimentHistoryFilter';
-import ExperimentHistoryTimeline, { ExperimentHistoryItem } from '../../../lib/experiment/history/ExperimentHistoryTimeline';
-import { FakeUser, fakeUser } from '../datasets/DatasetListRoute';
+import ExperimentHistoryTimeline from '../../../lib/experiment/history/ExperimentHistoryTimeline';
+import generateLoremIpsum from '../../../lib/utils/generateLoremIpsum';
+import { useUsers } from '../../queries/user';
 
-const users: FakeUser[] = faker.helpers.multiple(fakeUser, {
-  count: 5
-});
-
-export const history: ExperimentHistoryItem[] = Array.from({ length: 30 }).map(() => ({
-  id: faker.string.uuid(),
-  eventType: eventTypes[Math.floor(Math.random() * eventTypes.length)],
-  message: faker.lorem.sentence(15),
-  by: Math.random() > 0.5 ? faker.helpers.arrayElement(users) : undefined
-}));
+const creteFakeExperimentHistoryItems = (users: FakeUser[]) =>
+  Array.from({ length: 30 }).map(() => ({
+    id: crypto.randomUUID(),
+    eventType: eventTypes[Math.floor(Math.random() * eventTypes.length)],
+    message: generateLoremIpsum(15),
+    by: users[Math.floor(Math.random() * users.length)]
+  }));
 
 export default function ExperimentHistoryRoute() {
   const [userFilter, setUserFilter] = useState<Array<FakeUser['userId']>>([]);
   const [eventTypeFilter, setEventTypeFilter] = useState<EventTypes>([]);
+  const usersQuery = useUsers();
 
-  const filteredHistory = history
+  if (usersQuery.isLoading) {
+    return <div>Loading...</div>;
+  } else if (usersQuery.isError || !usersQuery.data) {
+    return <div>Error: {usersQuery.error}</div>;
+  }
+
+  const users = usersQuery.data;
+  const items = creteFakeExperimentHistoryItems(users);
+
+  const filteredItems = items
     .filter(item => eventTypeFilter.length === 0 || eventTypeFilter.includes(item.eventType))
     .filter(item => userFilter.length === 0 || (item.by && userFilter.includes(item.by.userId)));
 
@@ -37,7 +45,7 @@ export default function ExperimentHistoryRoute() {
         />
       </div>
 
-      <ExperimentHistoryTimeline history={filteredHistory} />
+      <ExperimentHistoryTimeline history={filteredItems} />
     </div>
   );
 }

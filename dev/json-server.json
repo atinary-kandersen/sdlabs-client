@@ -1,4 +1,41 @@
 {
+  "users": [
+    {
+      "userId": "b660512c-4375-40cf-bea4-c0d724513462",
+      "firstName": "Edyth",
+      "lastName": "Sauer",
+      "email": "Queen65@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/3917662"
+    },
+    {
+      "userId": "11c138b3-fc60-4491-bd7b-eca5725d97cc",
+      "firstName": "Dereck",
+      "lastName": "O'Conner",
+      "email": "Daniella_Kris33@hotmail.com",
+      "avatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/59.jpg"
+    },
+    {
+      "userId": "ae20871c-d89d-4765-b17a-f712bff4f8b2",
+      "firstName": "Delia",
+      "lastName": "Wiegand",
+      "email": "Esta_Spinka@hotmail.com",
+      "avatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/29.jpg"
+    },
+    {
+      "userId": "8ce97567-9a2e-4fbf-82ed-d14b5940309e",
+      "firstName": "Viviane",
+      "lastName": "Quigley",
+      "email": "Abner_Batz27@hotmail.com",
+      "avatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/43.jpg"
+    },
+    {
+      "userId": "49aa7b84-50b7-46a1-9804-398d5797eea4",
+      "firstName": "Maximillia",
+      "lastName": "Quigley",
+      "email": "Tommie.Langworth91@hotmail.com",
+      "avatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/39.jpg"
+    }
+  ],
   "experiments": [
     {
       "id": "195876",

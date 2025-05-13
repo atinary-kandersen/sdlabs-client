@@ -1,10 +1,10 @@
-import { faker } from '@faker-js/faker';
 import { Button } from '@mantine/core';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import { Parameter } from '../../../../global';
 import RightPanel from '../../../../lib/common/components/RightPanel/RightPanel';
 import { Stepper } from '../../../../lib/common/components/Stepper/Stepper';
+import generateLoremIpsum from '../../../../lib/utils/generateLoremIpsum';
 import { Page } from '../../../components/page/Page';
 import CreateExperimentContext, { CreateExperimentContextType } from './CreateExperimentContext';
 import { getContextDataFromLocalStorage, setContextDataToLocalStorage } from './localStorage';
@@ -107,7 +107,7 @@ export default function CreateExperimentRoute() {
                   {/* {currentStep === 'parameters' && <div>Refine your parameters.</div>} */}
 
                   {Array.from({ length: 3 }).map((_, index) => (
-                    <p key={index}>{faker.lorem.sentence(12)}</p>
+                    <p key={index}>{generateLoremIpsum(12)}</p>
                   ))}
                 </RightPanel>
               </div>
@@ -118,34 +118,3 @@ export default function CreateExperimentRoute() {
     </Page>
   );
 }
-
-// function RightPanel({
-//   children,
-//   onBack,
-//   onContinue,
-//   showBack
-// }: {
-//   children: ReactNode;
-//   onBack?: () => void;
-//   onContinue: () => void;
-//   showBack: boolean;
-// }) {
-//   return (
-//     <div className="wa-stack wa-gap-2xl" style={{ flex: 2, backgroundColor: 'var(--wa-color-neutral-fill-quiet)', padding: 'var(--wa-space-xl)' }}>
-//       <div className="wa-gap-s">
-//         {onContinue && (
-//           <wa-button variant="brand" onClick={onContinue}>
-//             Continue
-//             <wa-icon name="arrow-right" slot="suffix"></wa-icon>
-//           </wa-button>
-//         )}
-//         {showBack && (
-//           <wa-button variant="neutral" appearance="filled" onClick={onBack}>
-//             Go back
-//           </wa-button>
-//         )}
-//       </div>
-//       {children}
-//     </div>
-//   );
-// }

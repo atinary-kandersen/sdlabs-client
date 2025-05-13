@@ -1,6 +1,6 @@
 import { Collapse, Skeleton, Text, Timeline } from '@mantine/core';
 import { useState } from 'react';
-import { FakeUser } from '../../../app/routes/datasets/DatasetListRoute';
+import { FakeUser } from '../../../global';
 import { EventType, eventTypeColor, eventTypeIcons, eventTypeMessage } from '../../../lib/experiment/history/eventType';
 import styles from './ExperimentHistoryTimeline.module.css';
 

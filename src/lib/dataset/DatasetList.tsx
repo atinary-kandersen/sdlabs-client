@@ -1,10 +1,10 @@
-import { faker } from '@faker-js/faker';
 import { Badge, Progress } from '@mantine/core';
 import classNames from 'classnames';
 import { Link } from 'react-router';
 import { Dataset } from '../../global';
 import IconButton from '../common/components/IconButton/IconButton';
 import commonStyles from '../common/styles/common.module.css';
+import generateLoremIpsum from '../utils/generateLoremIpsum';
 import styles from './DatasetList.module.css';
 
 export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
@@ -65,7 +65,7 @@ export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
                       autoContrast
                       leftSection={<wa-icon name="flask" variant="light"></wa-icon>}
                     >
-                      {faker.science.chemicalElement().name}
+                      {generateLoremIpsum(2)}
                     </Badge>
                   ))}
               </div>
@@ -80,7 +80,7 @@ export default function DatasetList({ datasets }: { datasets: Dataset[] }) {
                     autoContrast
                     leftSection={<wa-icon name="flask" variant="light"></wa-icon>}
                   >
-                    {faker.science.chemicalElement().name}
+                    {generateLoremIpsum(2)}
                   </Badge>
                 ))}
             </td>

@@ -5,11 +5,13 @@ import { Experiment, ExperimentId } from '../../../global';
 import ExperimentList from '../../../lib/experiment/ExperimentList';
 import { Page } from '../../components/page/Page';
 import { useExperiments } from '../../queries/experiment';
+import { useUsers } from '../../queries/user';
 
 const filters = ['All', 'Mine', 'Watched', 'Archived'];
 type Filter = (typeof filters)[number];
 
 export default function ExperimentListRoute() {
+  const usersQuery = useUsers();
   const location = useLocation();
   const navigate = useNavigate();
   const query = useExperiments();
@@ -24,6 +26,12 @@ export default function ExperimentListRoute() {
     } else {
       setWatchList([...watchList, experimentId]);
     }
+  }
+
+  if (usersQuery.isLoading) {
+    return <div>Loading...</div>;
+  } else if (usersQuery.isError || !usersQuery.data) {
+    return <div>Error: {usersQuery.error}</div>;
   }
 
   return (
@@ -46,7 +54,14 @@ export default function ExperimentListRoute() {
 
             {/* the real api will return experiments in query.data.result, but not json-server */}
             {/* {query.data && <ExperimentList experiments={query.data.results} />} */}
-            {query.data && <ExperimentList experiments={query.data as unknown as Experiment[]} toggleWatch={toggleWatch} watchList={watchList} />}
+            {query.data && (
+              <ExperimentList
+                experiments={query.data as unknown as Experiment[]}
+                users={usersQuery.data}
+                toggleWatch={toggleWatch}
+                watchList={watchList}
+              />
+            )}
           </div>
         </div>
       </Page.Content>

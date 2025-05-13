@@ -28,6 +28,14 @@ export type Dataset = {
   addedBy: User;
 };
 
+export type FakeUser = {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  avatar: string;
+};
+
 type CustomElementType = React.DetailedHTMLProps;
 
 declare module 'react/jsx-runtime' {

@@ -1,25 +1,22 @@
-import { faker } from '@faker-js/faker';
-import { Badge, memoize } from '@mantine/core';
+import { Badge } from '@mantine/core';
 import classNames from 'classnames';
 import { Link } from 'react-router';
-import { Experiment, ExperimentId } from '../../global';
+import { Experiment, ExperimentId, FakeUser } from '../../global';
 import IconButton from '../common/components/IconButton/IconButton';
 import commonStyles from '../common/styles/common.module.css';
 import styles from './ExperimentList.module.css';
 
-const createFakeLeads = memoize((count: number) => faker.helpers.multiple(() => faker.person.fullName(), { count }));
-
 export default function ExperimentList({
   experiments,
+  users,
   toggleWatch,
   watchList
 }: {
   experiments: Experiment[];
+  users: FakeUser[];
   toggleWatch?: (experimentId: ExperimentId) => void;
   watchList?: ExperimentId[];
 }) {
-  const leads = createFakeLeads(experiments.length);
-
   return (
     <table className={styles.table}>
       <thead>
@@ -33,7 +30,7 @@ export default function ExperimentList({
         </tr>
       </thead>
       <tbody>
-        {experiments.map((experiment, index) => {
+        {experiments.map(experiment => {
           const watched = watchList?.includes(experiment.id) || false;
 
           return (
@@ -66,7 +63,7 @@ export default function ExperimentList({
               )}
               <td data-lead>
                 <Badge size="sm" radius="sm" color="cyan.1" autoContrast style={{ minWidth: 90 }}>
-                  {leads[index]}
+                  {users[Math.floor(Math.random() * users.length)].firstName}
                 </Badge>
               </td>
               <td data-iteration>
