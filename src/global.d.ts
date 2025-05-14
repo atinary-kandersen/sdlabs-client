@@ -19,13 +19,13 @@ export type Parameter = {
 
 const p: Parameter = { name: 'test', type: 'int' };
 
-export type Dataset = {
+export type FakeDataset = {
   id: string;
-  name: string;
+  fileName: string;
   type: string;
   bytes: number;
   created: Date;
-  addedBy: User;
+  createdBy: number; // TEMP: Index of the user in the users array
 };
 
 export type FakeUser = {

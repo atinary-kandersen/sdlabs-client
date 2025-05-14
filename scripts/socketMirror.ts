@@ -1,7 +1,7 @@
 /**
  * Creates a server running Socket.IO which mirrors all incoming messages.
  */
-import { createServer } from 'http';
+import { createServer } from 'node:http';
 import { Server } from 'socket.io';
 
 const port = 4000;

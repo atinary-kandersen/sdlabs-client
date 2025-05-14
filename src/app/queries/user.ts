@@ -1,3 +1,3 @@
 import api from '../config/api';
 
-export const useUsers = () => api.useQuery('get', '/users/', { queryKey: ['users'] });
+export const useUsers = () => api.useSuspenseQuery('get', '/users/', { queryKey: ['users'] });

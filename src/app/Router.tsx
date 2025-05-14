@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
-import App from './App.tsx';
+import App from './components/App/App.tsx';
 import HomeRoute from './routes/home/HomeRoute.tsx';
 
 const CreateExperimentRoute = React.lazy(() => import('./routes/experiment/CreateExperiment/CreateExperimentRoute.tsx'));

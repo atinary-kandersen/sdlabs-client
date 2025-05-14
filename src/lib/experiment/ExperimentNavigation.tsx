@@ -44,26 +44,6 @@ export default function ExperimentNavigation({ selectedConfigurationPath }: { se
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>
-
-      {/* <wa-dropdown>
-        <wa-button
-          appearance="plain"
-          slot="trigger"
-          caret
-          data-active={selectedConfigurationPath !== null}
-          className={classNames({ active: selectedConfigurationPath !== null })}
-          style={{ minWidth: 160 }}
-        >
-          <span style={{ textTransform: 'capitalize' }}>{selectedConfigurationPath ?? 'Configuration'}</span>
-        </wa-button>
-        <wa-menu onwa-select={(event: CustomEvent) => onSelectedConfigurationPath(event.detail.item.value)}>
-          <wa-menu-item value="parameters">Parameters</wa-menu-item>
-          <wa-menu-item value="objectives">Objectives</wa-menu-item>
-          <wa-menu-item value="constraints">Constraints</wa-menu-item>
-          <wa-menu-item value="batching">Batching</wa-menu-item>
-          <wa-menu-item value="optimizer">Optimizer</wa-menu-item>
-        </wa-menu>
-      </wa-dropdown> */}
     </div>
   );
 }

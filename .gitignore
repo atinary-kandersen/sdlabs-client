@@ -1,4 +1,5 @@
 src/generated
+dev/json-server.json
 
 # Logs
 logs

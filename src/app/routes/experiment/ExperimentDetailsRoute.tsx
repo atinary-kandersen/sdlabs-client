@@ -1,7 +1,7 @@
-import { Center, Loader } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router';
 import { InferOutput, picklist, safeParse } from 'valibot';
+import Loading from '../../../lib/common/components/Loading/Loading';
 import ExperimentDetailsHeader from '../../../lib/experiment/ExperimentDetailsHeader';
 import ExperimentNavigation from '../../../lib/experiment/ExperimentNavigation';
 import { Page } from '../../components/page/Page';
@@ -13,7 +13,7 @@ type ConfigurationNav = InferOutput<typeof configurationPathSchema>;
 
 export default function ExperimentDetailsRoute() {
   const experimentId = useParams<{ experimentId: string }>().experimentId!;
-  const query = useExperimentDetails(experimentId);
+  const experimentDetails = useExperimentDetails(experimentId);
   const location = useLocation();
   const [selectedConfigurationPath, setSelectedConfigurationPath] = useState<null | ConfigurationNav>(null);
 
@@ -23,30 +23,21 @@ export default function ExperimentDetailsRoute() {
     setSelectedConfigurationPath(parseResult.success ? parseResult.output : null);
   }, [experimentId, location]);
 
-  if (query.isLoading) {
-    return (
-      <Center w="100%" h="100%">
-        <Loader />
-      </Center>
-    );
-  } else if (!query.data) {
-    return <h4>Error loading experiment</h4>;
-  }
-
-  const experimentDetails = query.data;
+  const { name } = experimentDetails.data;
 
   return (
     <Page>
       <Page.Content>
-        <div className="wa-stack wa-gap-xl">
-          <ExperimentDetailsHeader name={experimentDetails.name} />
+        <Suspense fallback={<Loading />}>
+          <div className="wa-stack wa-gap-xl">
+            <ExperimentDetailsHeader name={name} />
+            <ExperimentNavigation selectedConfigurationPath={selectedConfigurationPath} />
 
-          <ExperimentNavigation selectedConfigurationPath={selectedConfigurationPath} />
-
-          {/* <Divider /> */}
-          <div style={{ height: '2rem' }}></div>
-          <Outlet />
-        </div>
+            {/* <Divider /> */}
+            <div style={{ height: '2rem' }}></div>
+            <Outlet />
+          </div>
+        </Suspense>
       </Page.Content>
     </Page>
   );

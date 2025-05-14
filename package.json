@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "setup": "npm rum openapi & npm run update:icons",
+    "setup": "npm rum openapi & json-server:generate",
     "vite": "vite",
-    "dev": "concurrently \"vite\" \"npm run json-server\" \"npm run socket-mirror\" --kill-others",
+    "dev": "concurrently \"vite\" \"npm run json-server:run\" \"npm run socket-mirror\" --kill-others",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -16,10 +16,10 @@
     "test:e2e": "npx playwright test --ui",
     "lint": "eslint . && prettier --check .",
     "format": "eslint --fix . && prettier --write .",
-    "json-server": "npx json-server dev/json-server.json --port 3001",
-    "socket-mirror": "node dev/socketMirror.js",
+    "json-server:generate": "node --experimental-strip-types scripts/generateJsonServer.ts",
+    "json-server:run": "npx json-server dev/json-server.json --port 3001",
+    "socket-mirror": "node --experimental-strip-types scripts/socketMirror.ts",
     "openapi": "npx openapi-typescript \"./dev/openapi.yaml\" --output \"./src/generated/openapi.d.ts\"",
-    "update:icons": "npm update '@awesome.me/kit-3979d6528f'",
     "bundle-visualizer": "vite-bundle-visualizer -c vite.config.ts --sourcemap"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
+    "@faker-js/faker": "^9.7.0",
     "@tanstack/react-query-devtools": "^5.74.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.3",

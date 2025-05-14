@@ -1,5 +1,5 @@
-import { Button, SegmentedControl } from '@mantine/core';
-import { useState } from 'react';
+import { Button, Loader, SegmentedControl } from '@mantine/core';
+import { Suspense, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { Experiment, ExperimentId } from '../../../global';
 import ExperimentList from '../../../lib/experiment/ExperimentList';
@@ -11,10 +11,10 @@ const filters = ['All', 'Mine', 'Watched', 'Archived'];
 type Filter = (typeof filters)[number];
 
 export default function ExperimentListRoute() {
-  const usersQuery = useUsers();
+  const users = useUsers();
+  const experiments = useExperiments();
   const location = useLocation();
   const navigate = useNavigate();
-  const query = useExperiments();
   const searchParams = new URLSearchParams(location.search);
   const activeFilter =
     searchParams.has('filter') && filters.includes(searchParams.get('filter') as Filter) ? searchParams.get('filter')! : filters[0];
@@ -26,12 +26,6 @@ export default function ExperimentListRoute() {
     } else {
       setWatchList([...watchList, experimentId]);
     }
-  }
-
-  if (usersQuery.isLoading) {
-    return <div>Loading...</div>;
-  } else if (usersQuery.isError || !usersQuery.data) {
-    return <div>Error: {usersQuery.error}</div>;
   }
 
   return (
@@ -48,21 +42,15 @@ export default function ExperimentListRoute() {
             </div>
           </div>
 
-          <div>
-            {query.isLoading && <p>Loading ...</p>}
-            {query.isError && <p>Error loading experiments.</p>}
-
-            {/* the real api will return experiments in query.data.result, but not json-server */}
-            {/* {query.data && <ExperimentList experiments={query.data.results} />} */}
-            {query.data && (
-              <ExperimentList
-                experiments={query.data as unknown as Experiment[]}
-                users={usersQuery.data}
-                toggleWatch={toggleWatch}
-                watchList={watchList}
-              />
-            )}
-          </div>
+          <Suspense name="ExperimentList" fallback={<Loader />}>
+            {/* The real api will return experiments in experiments.data.result, but not json-server. */}
+            <ExperimentList
+              experiments={experiments.data as unknown as Experiment[]}
+              users={users.data}
+              toggleWatch={toggleWatch}
+              watchList={watchList}
+            />
+          </Suspense>
         </div>
       </Page.Content>
     </Page>

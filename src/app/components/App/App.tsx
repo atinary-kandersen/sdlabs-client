@@ -5,12 +5,11 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet } from 'react-router';
-import ErrorFallbackRender from '../lib/common/components/error/ErrorFallbackRender';
+import ErrorFallbackRender from '../../../lib/common/components/error/ErrorFallbackRender';
+import { queryClient } from '../../config/api';
+import theme from '../../config/theme';
+import SideNavPanel from '../SideNavPanel/SideNavPanel';
 import styles from './App.module.css';
-import SideNavPanel from './components/SideNavPanel/SideNavPanel';
-import { queryClient } from './config/api';
-import theme from './config/theme';
-import './index.css';
 
 export default function App() {
   return (
