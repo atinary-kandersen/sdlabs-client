@@ -1,7 +1,8 @@
 import { CloseButton } from '@mantine/core';
 import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { Link, To } from 'react-router';
+import type { ReactNode } from 'react';
+import type { To } from 'react-router';
+import { Link } from 'react-router';
 import commonStyles from '../../styles/common.module.css';
 import styles from './List.module.css';
 

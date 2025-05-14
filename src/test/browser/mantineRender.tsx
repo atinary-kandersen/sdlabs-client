@@ -1,5 +1,5 @@
 import { MantineProvider } from '@mantine/core';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { render } from 'vitest-browser-react';
 import theme from '../../app/config/theme';
 

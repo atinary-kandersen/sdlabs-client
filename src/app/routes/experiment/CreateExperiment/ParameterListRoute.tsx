@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Parameter } from '../../../../global';
+import type { Parameter } from '../../../../global';
 import MultipleParameterNameInput from '../../../../lib/experiment/parameters/MultipleParameterNameInput';
 import ParameterList from '../../../../lib/experiment/parameters/ParameterList';
 import CreateExperimentContext from './CreateExperimentContext';

@@ -1,5 +1,5 @@
 import { TextInput } from '@mantine/core';
-import { KeyboardEvent } from 'react';
+import type { KeyboardEvent } from 'react';
 import commonStyles from '../../common/styles/common.module.css';
 
 export default function MultipleParameterNameInput({ onEnter }: { onEnter: (names: string[]) => void }) {

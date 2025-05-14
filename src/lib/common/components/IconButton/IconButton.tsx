@@ -1,7 +1,9 @@
-import { ActionIcon, ActionIconProps, FloatingPosition, Tooltip } from '@mantine/core';
-import { HTMLAttributes } from 'react';
-import { NavLink, To } from 'react-router';
-import { JSX } from 'react/jsx-runtime';
+import type { ActionIconProps, FloatingPosition } from '@mantine/core';
+import { ActionIcon, Tooltip } from '@mantine/core';
+import type { HTMLAttributes } from 'react';
+import type { To } from 'react-router';
+import { NavLink } from 'react-router';
+import type { JSX } from 'react/jsx-runtime';
 import styles from './IconButton.module.css';
 
 export default function IconButton({

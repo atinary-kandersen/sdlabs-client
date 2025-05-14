@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 export type User = components['schemas']['User'];
 export type UserType = components['schemas']['UserType'];

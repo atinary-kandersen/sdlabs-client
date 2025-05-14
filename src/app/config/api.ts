@@ -1,8 +1,8 @@
 import { QueryClient } from '@tanstack/react-query';
 import createFetchClient from 'openapi-fetch';
 import createClient from 'openapi-react-query';
-import { paths } from '../../generated/openapi';
-import { FakeDataset, FakeUser } from '../../global';
+import type { paths } from '../../generated/openapi';
+import type { FakeDataset, FakeUser } from '../../global';
 import environment from './environment';
 
 type FakePaths = {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import MappingItem from './DatasetMappingItem';
-import { DatasetDefinition, MappingDefinition } from './types';
+import type { DatasetDefinition, MappingDefinition } from './types';
 
 function validateMappingItem(item: MappingDefinition): boolean {
   return item.disabled || ['parameter', 'measurement', 'both'].includes(item.columnType);

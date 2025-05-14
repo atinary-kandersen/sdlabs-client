@@ -1,7 +1,8 @@
 import { Collapse, Skeleton, Text, Timeline } from '@mantine/core';
 import { useState } from 'react';
-import { FakeUser } from '../../../global';
-import { EventType, eventTypeColor, eventTypeIcons, eventTypeMessage } from '../../../lib/experiment/history/eventType';
+import type { FakeUser } from '../../../global';
+import type { EventType } from '../../../lib/experiment/history/eventType';
+import { eventTypeColor, eventTypeIcons, eventTypeMessage } from '../../../lib/experiment/history/eventType';
 import styles from './ExperimentHistoryTimeline.module.css';
 
 export type ExperimentHistoryItem = {

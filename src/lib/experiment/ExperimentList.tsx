@@ -1,7 +1,7 @@
 import { Badge } from '@mantine/core';
 import classNames from 'classnames';
 import { Link } from 'react-router';
-import { Experiment, ExperimentId, FakeUser } from '../../global';
+import type { Experiment, ExperimentId, FakeUser } from '../../global';
 import IconButton from '../common/components/IconButton/IconButton';
 import commonStyles from '../common/styles/common.module.css';
 import styles from './ExperimentList.module.css';

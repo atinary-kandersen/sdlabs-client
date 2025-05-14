@@ -1,6 +1,6 @@
 import { Button } from '@mantine/core';
 import DatasetMapping from '../../../lib/dataset/Mapping/DatasetMapping';
-import { DatasetDefinition } from '../../../lib/dataset/Mapping/types';
+import type { DatasetDefinition } from '../../../lib/dataset/Mapping/types';
 import { Page } from '../../components/page/Page';
 
 export default function DatasetDetailsRoute() {

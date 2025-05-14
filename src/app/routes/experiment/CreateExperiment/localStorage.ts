@@ -1,5 +1,6 @@
 import { parse } from 'valibot';
-import { contextDataSchema, CreateExperimentContextType } from './CreateExperimentContext';
+import type { CreateExperimentContextType } from './CreateExperimentContext';
+import { contextDataSchema } from './CreateExperimentContext';
 
 const key = 'createExperimentContextData';
 

@@ -1,7 +1,9 @@
 import { createContext } from 'react';
-import { array, GenericSchema, number, object, optional, picklist, string } from 'valibot';
-import { Parameter } from '../../../../global';
-import steps, { Step } from './steps';
+import type { GenericSchema } from 'valibot';
+import { array, number, object, optional, picklist, string } from 'valibot';
+import type { Parameter } from '../../../../global';
+import type { Step } from './steps';
+import steps from './steps';
 
 export type CreateExperimentContextType = {
   data: {

@@ -1,4 +1,4 @@
-import { ExperimentId } from '../../global';
+import type { ExperimentId } from '../../global';
 import api from '../config/api';
 
 export const useExperiments = () => api.useSuspenseQuery('get', '/experiments/', { queryKey: ['experiments'] });

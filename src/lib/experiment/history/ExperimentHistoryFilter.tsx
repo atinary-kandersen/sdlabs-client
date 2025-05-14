@@ -1,7 +1,9 @@
 import { Button, Checkbox, Menu } from '@mantine/core';
-import { ChangeEvent, useState } from 'react';
-import { FakeUser } from '../../../global';
-import { EventType, eventTypeColor, eventTypeIcons, eventTypeMessage, EventTypes } from './eventType';
+import type { ChangeEvent } from 'react';
+import { useState } from 'react';
+import type { FakeUser } from '../../../global';
+import type { EventType, EventTypes } from './eventType';
+import { eventTypeColor, eventTypeIcons, eventTypeMessage } from './eventType';
 
 export default function ExperimentHistoryFilter({
   eventTypes,

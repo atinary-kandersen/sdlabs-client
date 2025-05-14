@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import ListItem from './ListItem';
 
 export default function List({ children }: { children: ReactNode }) {

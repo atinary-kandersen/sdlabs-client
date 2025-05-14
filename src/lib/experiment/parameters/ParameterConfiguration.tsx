@@ -1,6 +1,6 @@
 import { SegmentedControl, TextInput } from '@mantine/core';
-import { ChangeEvent } from 'react';
-import { Parameter, ParameterType } from '../../../global';
+import type { ChangeEvent } from 'react';
+import type { Parameter, ParameterType } from '../../../global';
 
 export default function ParameterConfiguration({ parameter, onChange }: { parameter: Parameter; onChange: (parameter: Partial<Parameter>) => void }) {
   return (

@@ -1,7 +1,7 @@
 import { AreaChart, CompositeChart, LineChart, ScatterChart } from '@mantine/charts';
 import '@mantine/charts/styles.css';
 import { ActionIcon, Menu, Title } from '@mantine/core';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Page } from '../../components/page/Page';
 import { generateRandomDataPoints } from './data';
 

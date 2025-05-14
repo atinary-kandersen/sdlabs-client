@@ -1,7 +1,7 @@
 import { Select, Switch, TextInput } from '@mantine/core';
 import classNames from 'classnames';
 import styles from './DatasetMapping.module.css';
-import { ColumnType, MappingDefinition } from './types';
+import type { ColumnType, MappingDefinition } from './types';
 
 export default function MappingItem({
   item,

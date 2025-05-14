@@ -1,7 +1,7 @@
 import { Badge, Progress } from '@mantine/core';
 import classNames from 'classnames';
 import { Link } from 'react-router';
-import { FakeDataset } from '../../global';
+import type { FakeDataset } from '../../global';
 import IconButton from '../common/components/IconButton/IconButton';
 import commonStyles from '../common/styles/common.module.css';
 import generateLoremIpsum from '../utils/generateLoremIpsum';

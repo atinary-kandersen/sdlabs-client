@@ -1,4 +1,4 @@
-import { Parameter } from '../../../global';
+import type { Parameter } from '../../../global';
 import List from '../../common/components/List/List';
 import ParameterListItem from './ParameterListItem';
 

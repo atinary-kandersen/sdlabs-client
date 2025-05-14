@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { StoreState } from './types';
+import type { StoreState } from './types';
 
 export const useGlobalStore = create<StoreState>(() => ({
   /**

@@ -1,5 +1,6 @@
 import { Group, Stack, Text } from '@mantine/core';
-import { Dropzone, FileWithPath, MIME_TYPES } from '@mantine/dropzone';
+import type { FileWithPath } from '@mantine/dropzone';
+import { Dropzone, MIME_TYPES } from '@mantine/dropzone';
 import styles from './DatasetDropzone.module.css';
 
 export default function DatasetDropzone({ onDrop }: { onDrop: (files: FileWithPath[]) => void }) {

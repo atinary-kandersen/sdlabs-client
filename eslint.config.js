@@ -29,7 +29,8 @@ export default defineConfig([
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'react/jsx-key': 'off'
+      'react/jsx-key': 'off',
+      '@typescript-eslint/consistent-type-imports': 'error'
     }
   }
 ]);

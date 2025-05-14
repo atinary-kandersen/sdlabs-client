@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { FakeUser } from '../../../global';
-import { EventTypes, eventTypes } from '../../../lib/experiment/history/eventType';
+import type { FakeUser } from '../../../global';
+import type { EventTypes } from '../../../lib/experiment/history/eventType';
+import { eventTypes } from '../../../lib/experiment/history/eventType';
 import ExperimentHistoryFilter from '../../../lib/experiment/history/ExperimentHistoryFilter';
 import ExperimentHistoryTimeline from '../../../lib/experiment/history/ExperimentHistoryTimeline';
 import generateLoremIpsum from '../../../lib/utils/generateLoremIpsum';

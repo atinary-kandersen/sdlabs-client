@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { Children, cloneElement, ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import { Children, cloneElement } from 'react';
 import styles from './Stepper.module.css';
 
 export const Stepper = ({ children, activeStep }: { children: Array<ReactElement<typeof Step>>; activeStep: number }) => {

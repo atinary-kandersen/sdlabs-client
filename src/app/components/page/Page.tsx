@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import { Children, FunctionComponent, ReactElement } from 'react';
-import { NavLinkRenderProps } from 'react-router';
+import type { FunctionComponent, ReactElement } from 'react';
+import { Children } from 'react';
+import type { NavLinkRenderProps } from 'react-router';
 import styles from './Page.module.css';
 
 export const Page = ({ children }: { children: ReactElement | ReactElement[] }) => {

@@ -1,6 +1,6 @@
 import { Avatar } from '@mantine/core';
-import { To } from 'react-router';
-import { ParameterType } from '../../../global';
+import type { To } from 'react-router';
+import type { ParameterType } from '../../../global';
 import List from '../../common/components/List/List';
 
 export default function ParameterListItem({

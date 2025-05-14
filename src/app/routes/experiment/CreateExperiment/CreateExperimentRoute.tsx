@@ -1,14 +1,16 @@
 import { Button } from '@mantine/core';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import { Parameter } from '../../../../global';
+import type { Parameter } from '../../../../global';
 import RightPanel from '../../../../lib/common/components/RightPanel/RightPanel';
 import { Stepper } from '../../../../lib/common/components/Stepper/Stepper';
 import generateLoremIpsum from '../../../../lib/utils/generateLoremIpsum';
 import { Page } from '../../../components/page/Page';
-import CreateExperimentContext, { CreateExperimentContextType } from './CreateExperimentContext';
+import type { CreateExperimentContextType } from './CreateExperimentContext';
+import CreateExperimentContext from './CreateExperimentContext';
 import { getContextDataFromLocalStorage, setContextDataToLocalStorage } from './localStorage';
-import steps, { Step } from './steps';
+import type { Step } from './steps';
+import steps from './steps';
 
 export default function CreateExperimentRoute() {
   // const { mutateAsync } = useCreateExperiment();

@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router';
-import { InferOutput, picklist, safeParse } from 'valibot';
+import type { InferOutput } from 'valibot';
+import { picklist, safeParse } from 'valibot';
 import Loading from '../../../lib/common/components/Loading/Loading';
 import ExperimentDetailsHeader from '../../../lib/experiment/ExperimentDetailsHeader';
 import ExperimentNavigation from '../../../lib/experiment/ExperimentNavigation';

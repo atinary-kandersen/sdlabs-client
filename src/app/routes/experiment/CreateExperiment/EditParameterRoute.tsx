@@ -1,7 +1,7 @@
 import { Kbd } from '@mantine/core';
 import { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { Parameter } from '../../../../global';
+import type { Parameter } from '../../../../global';
 import ParameterConfiguration from '../../../../lib/experiment/parameters/ParameterConfiguration';
 import CreateExperimentContext from './CreateExperimentContext';
 

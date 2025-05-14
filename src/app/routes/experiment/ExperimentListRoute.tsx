@@ -1,7 +1,7 @@
 import { Button, Loader, SegmentedControl } from '@mantine/core';
 import { Suspense, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { Experiment, ExperimentId } from '../../../global';
+import type { Experiment, ExperimentId } from '../../../global';
 import ExperimentList from '../../../lib/experiment/ExperimentList';
 import { Page } from '../../components/page/Page';
 import { useExperiments } from '../../queries/experiment';
