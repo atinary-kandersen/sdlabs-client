@@ -7,7 +7,8 @@ export const useGlobalStore = create<StoreState>(() => ({
    * so the client doesn't have to request it on page load.
    */
   theme: 'light',
-  experiments: new Map()
+  watchedExperiments: new Set()
 }));
 
 export const useThemeStore = () => useGlobalStore(state => state.theme);
+export const useWatchedExperimentStore = () => useGlobalStore(state => state.watchedExperiments);

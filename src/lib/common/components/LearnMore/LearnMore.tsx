@@ -3,7 +3,7 @@ import commonStyles from '../../../common/styles/common.module.css';
 
 const LearnMore = ({ text }: { text: string }) => {
   return (
-    <HoverCard width={200} position="top" withArrow>
+    <HoverCard width={350} position="top" withArrow shadow="sm">
       <HoverCard.Target>
         <span className={commonStyles.hintText} style={{ cursor: 'pointer' }}>
           <u>Learn more</u>

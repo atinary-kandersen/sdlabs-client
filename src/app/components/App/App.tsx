@@ -8,7 +8,7 @@ import { Outlet } from 'react-router';
 import ErrorFallbackRender from '../../../lib/common/components/error/ErrorFallbackRender';
 import { queryClient } from '../../config/api';
 import theme from '../../config/theme';
-import SideNavPanel from '../SideNavPanel/SideNavPanel';
+import SidebarNav from '../SidebarNav/SidebarNav';
 import styles from './App.module.css';
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
       <ErrorBoundary FallbackComponent={ErrorFallbackRender}>
         <MantineProvider theme={theme}>
           <div id="app" className={styles.app}>
-            <SideNavPanel />
+            <SidebarNav />
             <main className={styles.main}>
               <Outlet />
             </main>

@@ -38,7 +38,7 @@ export default function IconButton({
 
   if (tooltip) {
     return (
-      <Tooltip position={tooltipPosition} offset={15} label={tooltip} openDelay={250}>
+      <Tooltip position={tooltipPosition} label={tooltip}>
         {Button}
       </Tooltip>
     );

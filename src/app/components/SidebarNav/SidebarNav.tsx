@@ -1,8 +1,12 @@
 import classNames from 'classnames';
 import IconButton from '../../../lib/common/components/IconButton/IconButton';
-import styles from './SideNavPanel.module.css';
+import { useWatchedExperimentStore } from '../../state/store';
+import styles from './SidebarNav.module.css';
+import WatchedExperiments from './WatchedExperiments';
 
-export default function SideNavPanel() {
+export default function SidebarNav() {
+  const watchedExperiments = useWatchedExperimentStore();
+
   return (
     <div className={classNames('wa-stack wa-gap-2xl wa-align-items-center', styles.container)}>
       <img
@@ -14,6 +18,8 @@ export default function SideNavPanel() {
         <IconButton to="/experiments" icon="flask" tooltip="Experiments" size="xl" />
         <IconButton to="/datasets" icon="table" tooltip="Datasets" size="xl" />
         <IconButton to="/analytics" icon="chart-mixed" tooltip="Analytics" size="xl" />
+        <div className={styles.divider}></div>
+        <WatchedExperiments experimentIds={Array.from(watchedExperiments)} />
       </div>
       <div className={styles.bottom}>
         <div className="wa-stack wa-gap-2xs wa-align-items-center">

@@ -34,7 +34,6 @@ export default function AnalyticsRoute() {
                 { name: 'Oranges', color: 'blue.6' },
                 { name: 'Tomatoes', color: 'teal.6' }
               ]}
-              curveType="natural"
             />
           </ChartWrapper>
           <ChartWrapper width={width} height={height} title="AreaChart title">
@@ -63,7 +62,6 @@ export default function AnalyticsRoute() {
                 { name: 'Apples', color: 'red.8', type: 'line' },
                 { name: 'Oranges', color: 'yellow.8', type: 'area' }
               ]}
-              curveType="natural"
             />
           </ChartWrapper>
           <ChartWrapper width={width} height={height} title="CompositeChart title">

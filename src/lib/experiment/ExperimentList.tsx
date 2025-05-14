@@ -14,7 +14,7 @@ export default function ExperimentList({
 }: {
   experiments: Experiment[];
   users: FakeUser[];
-  toggleWatch?: (experimentId: ExperimentId) => void;
+  toggleWatch?: (experimentId: ExperimentId, watch: boolean) => void;
   watchList?: ExperimentId[];
 }) {
   return (
@@ -51,11 +51,10 @@ export default function ExperimentList({
 
               {watchList && (
                 <td data-watch>
-                  <IconButton onClick={() => typeof toggleWatch === 'function' && toggleWatch(experiment.id)}>
+                  <IconButton onClick={() => typeof toggleWatch === 'function' && toggleWatch(experiment.id, !watchList.includes(experiment.id))}>
                     <wa-icon
                       name={watched ? 'eye' : 'eye-slash'}
                       variant={watched ? 'regular' : 'light'}
-                      size="lg"
                       style={{ color: watched ? 'var(--mantine-color-green-7)' : 'var(--mantine-color-gray-5)' }}
                     ></wa-icon>
                   </IconButton>

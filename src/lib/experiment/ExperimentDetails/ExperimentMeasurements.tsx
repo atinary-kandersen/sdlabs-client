@@ -1,8 +1,8 @@
 import { Avatar, Text, TextInput } from '@mantine/core';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import commonStyles from '../common/styles/common.module.css';
-import generateLoremIpsum from '../utils/generateLoremIpsum';
+import commonStyles from '../../common/styles/common.module.css';
+import generateLoremIpsum from '../../utils/generateLoremIpsum';
 import styles from './ExperimentMeasurements.module.css';
 
 function Typewriter({ text, speed = 10 }: { text: string; speed?: number }) {

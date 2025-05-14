@@ -2,9 +2,11 @@ import { Button, Menu } from '@mantine/core';
 import { NavLink } from 'react-router';
 import styles from './ExperimentNavigation.module.css';
 
+const configurationMenuItems = ['Parameters', 'Objectives', 'Constraints', 'Batching', 'Optimizer'];
+
 export default function ExperimentNavigation({ selectedConfigurationPath }: { selectedConfigurationPath: string | null }) {
   return (
-    <div className="wa-cluster wa-gap-xs">
+    <div className="wa-cluster wa-gap-2xs">
       <Button component={NavLink} to="" end variant="subtle" className={styles.navButton}>
         Overview
       </Button>
@@ -27,21 +29,11 @@ export default function ExperimentNavigation({ selectedConfigurationPath }: { se
           </Button>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item component={NavLink} to="parameters">
-            Parameters
-          </Menu.Item>
-          <Menu.Item component={NavLink} to="objectives">
-            Objectives
-          </Menu.Item>
-          <Menu.Item component={NavLink} to="constraints">
-            Constraints
-          </Menu.Item>
-          <Menu.Item component={NavLink} to="batching">
-            Batching
-          </Menu.Item>
-          <Menu.Item component={NavLink} to="optimizer">
-            Optimizer
-          </Menu.Item>
+          {configurationMenuItems.map(item => (
+            <Menu.Item key={item} component={NavLink} to={item.toLowerCase()} style={{ fontWeight: 500 }} className={styles.navButton}>
+              {item}
+            </Menu.Item>
+          ))}
         </Menu.Dropdown>
       </Menu>
     </div>

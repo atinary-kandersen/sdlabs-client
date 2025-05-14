@@ -1,11 +1,13 @@
 import { Button, Loader, SegmentedControl } from '@mantine/core';
-import { Suspense, useState } from 'react';
+import { Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import type { Experiment, ExperimentId } from '../../../global';
+import type { Experiment } from '../../../global';
 import ExperimentList from '../../../lib/experiment/ExperimentList';
 import { Page } from '../../components/page/Page';
 import { useExperiments } from '../../queries/experiment';
 import { useUsers } from '../../queries/user';
+import { toggleWatchExperiment } from '../../state/actions';
+import { useWatchedExperimentStore } from '../../state/store';
 
 const filters = ['All', 'Mine', 'Watched', 'Archived'];
 type Filter = (typeof filters)[number];
@@ -18,15 +20,7 @@ export default function ExperimentListRoute() {
   const searchParams = new URLSearchParams(location.search);
   const activeFilter =
     searchParams.has('filter') && filters.includes(searchParams.get('filter') as Filter) ? searchParams.get('filter')! : filters[0];
-  const [watchList, setWatchList] = useState<Array<ExperimentId>>([]);
-
-  function toggleWatch(experimentId: ExperimentId) {
-    if (watchList.includes(experimentId)) {
-      setWatchList(watchList.filter(id => id !== experimentId));
-    } else {
-      setWatchList([...watchList, experimentId]);
-    }
-  }
+  const watchedExperiments = useWatchedExperimentStore();
 
   return (
     <Page>
@@ -47,8 +41,8 @@ export default function ExperimentListRoute() {
             <ExperimentList
               experiments={experiments.data as unknown as Experiment[]}
               users={users.data}
-              toggleWatch={toggleWatch}
-              watchList={watchList}
+              toggleWatch={(experimentId, watch) => toggleWatchExperiment(experimentId, watch)}
+              watchList={Array.from(watchedExperiments)}
             />
           </Suspense>
         </div>

@@ -1,6 +1,6 @@
 import { Space, Text, Timeline } from '@mantine/core';
-import ExperimentContextInput from '../../../lib/experiment/ExperimentContextInput';
-import ExperimentMeasurements from '../../../lib/experiment/ExperimentMeasurements';
+import ExperimentContextInput from '../../../lib/experiment/ExperimentDetails/ExperimentContextInput';
+import ExperimentMeasurements from '../../../lib/experiment/ExperimentDetails/ExperimentMeasurements';
 import generateLoremIpsum from '../../../lib/utils/generateLoremIpsum';
 
 const iterations = Array.from({ length: 5 });

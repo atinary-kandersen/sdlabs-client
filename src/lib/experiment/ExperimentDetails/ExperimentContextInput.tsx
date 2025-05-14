@@ -1,7 +1,7 @@
 import { Avatar, Textarea } from '@mantine/core';
 import classNames from 'classnames';
-import LearnMore from '../common/components/LearnMore/LearnMore';
-import commonStyles from '../common/styles/common.module.css';
+import LearnMore from '../../common/components/LearnMore/LearnMore';
+import commonStyles from '../../common/styles/common.module.css';
 
 const ExperimentContextInput = () => {
   return (
@@ -11,7 +11,7 @@ const ExperimentContextInput = () => {
           <Avatar color="grape.9">
             <wa-icon name="sparkles" variant="regular" style={{ color: 'var(--mantine-color-grape-6)' }}></wa-icon>
           </Avatar>
-          <label>Guide the optimization</label>
+          <label>Prompt - Guide the optimization</label>
         </div>
 
         <LearnMore text="Add any observations or hypotheses you may have, in natural language, to guide the optimization." />
