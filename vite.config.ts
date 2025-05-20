@@ -12,6 +12,9 @@ export default defineConfig({
   ],
   appType: 'spa',
   envPrefix: 'ATI_',
+  server: {
+    open: true
+  },
   preview: {
     port: 4173,
     open: true

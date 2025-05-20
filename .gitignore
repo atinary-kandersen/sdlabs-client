@@ -1,5 +1,8 @@
-src/generated
+src/generated/**
+!src/generated/.gitkeep
 dev/json-server.json
+playwright-report/
+test-results/
 
 # Logs
 logs

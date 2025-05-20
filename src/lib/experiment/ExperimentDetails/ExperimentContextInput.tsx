@@ -1,7 +1,6 @@
-import { Avatar, Textarea } from '@mantine/core';
+import { Avatar, Text, Textarea } from '@mantine/core';
 import classNames from 'classnames';
 import LearnMore from '../../common/components/LearnMore/LearnMore';
-import commonStyles from '../../common/styles/common.module.css';
 
 const ExperimentContextInput = () => {
   return (
@@ -16,13 +15,15 @@ const ExperimentContextInput = () => {
 
         <LearnMore text="Add any observations or hypotheses you may have, in natural language, to guide the optimization." />
       </div>
-      <div className={commonStyles.focusBox}>
+      <div>
         <Textarea rows={4} placeholder={`Ex: "Add more acid to the next batch."`} maxLength={140} resize="none" spellCheck="false"></Textarea>
       </div>
-      <span className={commonStyles.hintText}>Max 140 characters</span>
-      <div className={commonStyles.hintText}>
+      <Text size="sm" c="dimmed">
+        Max 140 characters.
+      </Text>
+      <Text size="sm" c="dimmed">
         Note: Only your latest contextual information will be used in the optimization, not subsequent ones.
-      </div>
+      </Text>
     </div>
   );
 };

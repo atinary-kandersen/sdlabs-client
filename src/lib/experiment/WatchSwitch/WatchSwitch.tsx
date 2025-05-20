@@ -5,7 +5,7 @@ export default function WatchSwitch({ watched, setWatch }: { watched: boolean; s
     <Tooltip label="Watch this experiment" withArrow>
       <div>
         <Switch
-          size="md"
+          size="sm"
           color="blue.6"
           checked={watched}
           onChange={event => setWatch(event.currentTarget.checked)}

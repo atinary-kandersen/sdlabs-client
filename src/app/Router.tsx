@@ -47,7 +47,8 @@ const Router = () => (
           <Route path="summary" element={<h1>Summary</h1>} />
         </Route>
         <Route path="experiments/:experimentId" element={<ExperimentDetailsRoute />}>
-          <Route index element={<ExperimentHomeRoute />} />
+          <Route index element={<Navigate to="overview" replace />} />
+          <Route path="overview" element={<ExperimentHomeRoute />} />
           <Route path="insights" element={<ExperimentInsightsRoute />} />
           <Route path="history" element={<ExperimentHistoryRoute />} />
           <Route path="parameters" element={<h1>Parameters</h1>} />

@@ -2,7 +2,7 @@
 
 ## Scripts
 
-- `setup`: Runs all required scripts to run app.
+- `setup`: Runs all required scripts to run the app.
 - `dev`: Launches everything needed to develop.
 - `build`: Creates a production build in the `dist` folder.
 - `preview`: Serves the built solution from the `dist` folder. Remember to run `npm run build` before.
@@ -12,8 +12,11 @@
 - `test:e2e`: Runs all E2E tests. Remember to run `npm run build` before, as this uses the `preview` script to launch to app from dist folder.
 - `lint`: Checks all code formatting.
 - `format`: Formats all code.
-- `json-server`: Launches a `json-server` instance configured with `./dev/json-server.json`.
+- `json-server:generate`: Generates the json-server json file at `./src/generated/json-server.json`.
+- `json-server:run`: Launches a `json-server` instance configured with `./src/generated/json-server.json`.
 - `socket-mirror`: Launches a `Socket.IO` web server that mirrors all incoming messages.
+- `bundle-visualizer`: Visualizes the bundles.
+- `openapi`: Generates OpenAPI types file at `./src/generated/openapi.d.ts`
 
 ###
 
@@ -97,9 +100,7 @@ src
 
 ## VS Code setup
 
-### Extensions
-
-1. Install recommended extension in `.vscode/extensions.json`.
+Install recommended extensions listed in `.vscode/extensions.json`.
 
 ## Resources
 

@@ -10,38 +10,38 @@ export type ParameterType = 'numerical' | 'categorical';
 export type ParameterId = string;
 
 export type Parameter = {
-  id: string;
-  name: string;
-  type: ParameterType;
-  min?: number;
-  max?: number;
+	id: string;
+	name: string;
+	type: ParameterType;
+	min?: number;
+	max?: number;
 };
 
 const p: Parameter = { name: 'test', type: 'int' };
 
 export type FakeDataset = {
-  id: string;
-  fileName: string;
-  type: string;
-  bytes: number;
-  created: Date;
-  createdBy: number; // TEMP: Index of the user in the users array
+	id: string;
+	fileName: string;
+	type: string;
+	bytes: number;
+	created: Date;
+	createdBy: string; // TEMP: Index of the user in the users array
 };
 
 export type FakeUser = {
-  userId: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  avatar: string;
+	userId: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	avatar: string;
 };
 
 type CustomElementType = React.DetailedHTMLProps;
 
 declare module 'react/jsx-runtime' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wa-icon': CustomElementType;
-    }
-  }
+	namespace JSX {
+		interface IntrinsicElements {
+			'wa-icon': CustomElementType;
+		}
+	}
 }
